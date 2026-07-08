@@ -1,0 +1,47 @@
+{
+  "id": "delta-kilo-fluid-gauge",
+  "title": "Delta Kilo – Fluid Gauge",
+  "description": "Delta Kilo Autarch fluid gauge HUD with time-based consumption and crafting integration.",
+  "version": "0.1.0",
+  "authors": [
+    {
+      "name": "AgentGG"
+    }
+  ],
+  "compatibility": {
+    "minimum": "13",
+    "verified": "14",
+    "maximum": "14"
+  },
+  "relationships": {
+    "systems": [
+      {
+        "id": "dnd5e",
+        "type": "system",
+        "compatibility": {
+          "verified": "5.3.3"
+        }
+      }
+    ],
+    "requires": [
+      {
+        "id": "mastercrafted",
+        "type": "module",
+        "compatibility": {}
+      },
+      {
+        "id": "simple-timekeeping",
+        "type": "module",
+        "compatibility": {}
+      }
+    ]
+  },
+  "url": "https://github.com/AgentGG00/delta-kilo-fluid-gauge",
+  "manifest": "https://raw.githubusercontent.com/AgentGGG00/delta-kilo-fluid-gauge/main/module.json",
+  "download": "https://github.com/AgentGGG00/delta-kilo-fluid-gauge/releases/latest/download/module-latest.zip",
+  "license": "LICENSE",
+  "readme": "README.md",
+  "esmodules": [],
+  "styles": [],
+  "packs": []
+}

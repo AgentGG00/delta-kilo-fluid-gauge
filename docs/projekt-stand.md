@@ -1,8 +1,8 @@
 ## Checklist
 
 ### Init
-- [ ] Repo-Grundgerüst (module.json, LICENSE-Autor auf Pseudonym anpassen, docs/-Struktur)
-- [ ] module.json Grunddaten (id, title, description, compatibility, relationships)
+- [x] Repo-Grundgerüst (module.json, LICENSE-Autor auf Pseudonym anpassen, docs/-Struktur)
+- [x] module.json Grunddaten (id, title, description, compatibility, relationships)
 
 ### Backend
 - n/a – reines Client-seitiges Foundry-Modul, kein Backend
