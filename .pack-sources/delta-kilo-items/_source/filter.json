@@ -1,0 +1,32 @@
+{
+  "_id": "dkgitemfilter00001",
+  "name": "Filter",
+  "type": "tool",
+  "img": "assets/img/filter.png",
+  "folder": "dkgfolderressour1",
+  "system": {
+    "description": {
+      "value": "<p>A cylindrical mesh filter of tarnished brass and steel. Required as a tool for advanced Laublub filtration and distillation recipes. Reusable indefinitely; not consumed by crafting.</p>",
+      "chat": ""
+    },
+    "identifier": "filter",
+    "type": {
+      "value": "art",
+      "subtype": ""
+    },
+    "rarity": "rare",
+    "price": {
+      "value": 2500,
+      "denomination": "gp"
+    },
+    "weight": {
+      "value": 2,
+      "units": "lb"
+    },
+    "quantity": 1,
+    "proficient": null
+  },
+  "effects": [],
+  "flags": {},
+  "_key": "!items!dkgitemfilter00001"
+}

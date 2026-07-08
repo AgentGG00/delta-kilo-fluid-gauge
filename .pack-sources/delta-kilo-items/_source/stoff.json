@@ -1,0 +1,31 @@
+{
+  "_id": "dkgitemstoff000001",
+  "name": "Stoff",
+  "type": "loot",
+  "img": "assets/img/stoff.png",
+  "folder": "dkgfolderressour1",
+  "system": {
+    "description": {
+      "value": "<p>A folded piece of coarse woven fabric. Raw material used in the crafting of Stofffilter and Filtermaterial.</p>",
+      "chat": ""
+    },
+    "identifier": "stoff",
+    "type": {
+      "value": "material",
+      "subtype": ""
+    },
+    "rarity": "common",
+    "price": {
+      "value": 15,
+      "denomination": "gp"
+    },
+    "weight": {
+      "value": 1,
+      "units": "lb"
+    },
+    "quantity": 1
+  },
+  "effects": [],
+  "flags": {},
+  "_key": "!items!dkgitemstoff000001"
+}

@@ -1,0 +1,47 @@
+{
+  "_id": "dkgitemlaublubsim1",
+  "name": "Laublub Simple gefiltert",
+  "type": "consumable",
+  "img": "assets/img/simple.png",
+  "folder": "dkgfolderlaublub1",
+  "system": {
+    "description": {
+      "value": "<p>A vial of lightly filtered Laublub oil. Safe for Delta Kilo Autarchs to consume as lubricant, restoring hours to their fluid gauge.</p><h2>Drink</h2><p>Restricted to Autarchs of the Delta Kilo line. Restores hours to the drinker's fluid gauge, scaled by the amount consumed (Consumption Scaling).</p><h2>Douse</h2><p>Pour one charge onto the ground to coat a 5x5 ft. area with oil (each additional charge used adds one more adjacent 5x5 ft. area). While un-ignited, the area is difficult terrain and any creature entering it or starting its turn there must succeed on a DC 10 + the douser's Dexterity modifier Dexterity saving throw or fall prone; standing up requires the same save. The oil evaporates after 1 minute. If ignited, the oil burns for 1 minute, dealing 1d6 fire damage to any creature in the area at the start of its turn; while burning, the area is no longer difficult terrain and no save is required to move through it.</p><h2>Throw</h2><p>Make a ranged attack roll (1d20 + Dexterity or Strength modifier, whichever is higher) against a creature or object within range. On a hit, the target is coated in oil for 12 rounds (based on the bottle's remaining charges). At the start of its turn, the target may use its action to wipe off the oil with a DC 10 Dexterity saving throw; on a success, the remaining duration is reduced by 5 rounds. If the oil is ignited, it grants a one-time +2 bonus to the triggering fire damage and burns out immediately (1 round).</p>",
+      "chat": ""
+    },
+    "identifier": "laublub-simple-gefiltert",
+    "type": {
+      "value": "trinket",
+      "subtype": ""
+    },
+    "properties": ["gear"],
+    "rarity": "",
+    "price": {
+      "value": 15,
+      "denomination": "gp"
+    },
+    "weight": {
+      "value": 0.5,
+      "units": "lb"
+    },
+    "quantity": 1,
+    "uses": {
+      "max": "12",
+      "spent": 0,
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ]
+    }
+  },
+  "effects": [],
+  "flags": {
+    "dkg": {
+      "purityTier": "simple",
+      "hoursValue": 12
+    }
+  },
+  "_key": "!items!dkgitemlaublubsim1"
+}

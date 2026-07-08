@@ -1,0 +1,36 @@
+{
+  "_id": "dkgitemfiltermat01",
+  "name": "Filtermaterial",
+  "type": "consumable",
+  "img": "assets/img/filtermatierial.png",
+  "folder": "dkgfolderressour1",
+  "system": {
+    "description": {
+      "value": "<p>A loose bundle of fibrous filtration material, bound with cord. Crafted from 1 Stoff and 2 units of free-standing components (stones, sand, earth or similar). Must be used together with a Filter tool. Has 5 charges before it is spent.</p>",
+      "chat": ""
+    },
+    "identifier": "filtermaterial",
+    "type": {
+      "value": "trinket",
+      "subtype": ""
+    },
+    "rarity": "rare",
+    "price": {
+      "value": 50,
+      "denomination": "gp"
+    },
+    "weight": {
+      "value": 0.5,
+      "units": "lb"
+    },
+    "quantity": 1,
+    "uses": {
+      "max": "5",
+      "spent": 0,
+      "recovery": []
+    }
+  },
+  "effects": [],
+  "flags": {},
+  "_key": "!items!dkgitemfiltermat01"
+}

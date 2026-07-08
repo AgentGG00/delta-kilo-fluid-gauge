@@ -1,0 +1,100 @@
+{
+  "_id": "dkgitemsmeltersed1",
+  "name": "Smelters Edge",
+  "type": "tool",
+  "img": "assets/img/smelters_edge.png",
+  "folder": "dkgfoldertool0001",
+  "system": {
+    "description": {
+      "value": "<p>A steampunk welding torch resembling a lightsaber hilt, its tip emitting a short jet of blue-white plasma flame. Used to repair and heal Delta Kilo Autarchs by welding damaged plating back into place. When used on a non-Autarch creature, the plasma flame instead burns and damages them.</p><h2>Construct Mending</h2><p>The wielder chooses one of three intensity levels when activating the torch, consuming a corresponding number of charges. Charges are recovered on a short rest at a rate of the wielder's character level divided by 3 (rounded down), and fully restored on a long rest.</p><table><tr><th>Level</th><th>Charges</th><th>Formula</th></tr><tr><td>1</td><td>1</td><td>2d6 + spellcasting modifier + proficiency bonus</td></tr><tr><td>2</td><td>2</td><td>2d8 + spellcasting modifier + proficiency bonus</td></tr><tr><td>3</td><td>3</td><td>2d10 + spellcasting modifier + proficiency bonus</td></tr></table><p>If the wielder has no spellcasting ability, the spellcasting modifier is treated as +0. If the target is a Delta Kilo Autarch, the result heals the target's Hit Points. If the target is not an Autarch, the result instead deals fire damage to the target.</p>",
+      "chat": ""
+    },
+    "identifier": "smelters-edge",
+    "type": {
+      "value": "art",
+      "subtype": ""
+    },
+    "rarity": "rare",
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "weight": {
+      "value": 3,
+      "units": "lb"
+    },
+    "quantity": 1,
+    "proficient": null,
+    "uses": {
+      "max": "@details.level + 2",
+      "spent": 0,
+      "recovery": [
+        {
+          "period": "sr",
+          "type": "formula",
+          "formula": "floor(@details.level / 3)"
+        },
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ]
+    }
+  },
+  "activities": {
+    "dkgactconstructmd1": {
+      "type": "heal",
+      "_id": "dkgactconstructmd1",
+      "name": "Construct Mending",
+      "img": "assets/img/smelters_edge.png",
+      "activation": {
+        "type": "action",
+        "value": 1
+      },
+      "consumption": {
+        "targets": [
+          {
+            "type": "itemUses",
+            "value": "1"
+          }
+        ],
+        "scaling": {
+          "allowed": true,
+          "max": "3"
+        }
+      },
+      "range": {
+        "value": 5,
+        "units": "ft"
+      },
+      "target": {
+        "affects": {
+          "count": "1",
+          "type": "creature"
+        }
+      },
+      "healing": {
+        "custom": {
+          "enabled": true,
+          "formula": "2d6 + @mod + @prof"
+        },
+        "types": ["healing"],
+        "scaling": {
+          "mode": "whole",
+          "formula": "1d2 + 1d2"
+        }
+      },
+      "description": {
+        "chatFlavor": "Smelters Edge is applied to weld and repair the target's plating."
+      }
+    }
+  },
+  "effects": [],
+  "flags": {
+    "dkg": {
+      "healsRace": true,
+      "damagesNonRace": true
+    }
+  },
+  "_key": "!items!dkgitemsmeltersed1"
+}
