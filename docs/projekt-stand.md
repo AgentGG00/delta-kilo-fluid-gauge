@@ -13,8 +13,8 @@
 - [ ] Alarm-Lämpchen (Blink bei ≤20%)
 
 ### Framework
-- [ ] Actor-Flags Schema (`flags.dkg.*`) definieren
-- [ ] Hook-Anbindung Simple Timekeeping & Calendar
+- [x] Actor-Flags Schema (`flags.dkg.*`) definieren
+- [x] Hook-Anbindung Simple Timekeeping & Calendar
 
 ### Features
 
