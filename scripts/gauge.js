@@ -61,7 +61,7 @@ class DKGGaugeHud extends HandlebarsApplicationMixin(ApplicationV2) {
       left: 20,
       top: 200,
       width: 220,
-      height: 480
+      height: 443
     }
   };
 
