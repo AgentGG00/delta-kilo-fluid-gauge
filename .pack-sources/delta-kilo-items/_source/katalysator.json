@@ -1,9 +1,9 @@
 {
-  "_id": "dkgitemkatalysat01",
+  "_id": "JF0DyB6IkeU9coRY",
   "name": "Autarchen-Katalysator",
   "type": "consumable",
   "img": "assets/img/katlysator.png",
-  "folder": "dkgfolderressour1",
+  "folder": "qt5kpil3sawqpPOB",
   "system": {
     "description": {
       "value": "<p>A sealed metal capsule housing a faintly glowing crystalline core, engraved with intricate mechanical patterns. Required for the distillation of Laublub Destilliert. Used together with 2 Filter tools and 3 Filtermaterial charges in a distillation setup. Has 5 charges before it burns out and becomes inert.</p>",
@@ -32,5 +32,5 @@
   },
   "effects": [],
   "flags": {},
-  "_key": "!items!dkgitemkatalysat01"
+  "_key": "!items!JF0DyB6IkeU9coRY"
 }

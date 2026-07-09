@@ -1,9 +1,9 @@
 {
-  "_id": "dkgitemlaublubroh1",
+  "_id": "jFybGdZ69fCXIwLF",
   "name": "Laublub Roh",
   "type": "consumable",
   "img": "assets/img/roh.png",
-  "folder": "dkgfolderlaublub1",
+  "folder": "FniKvBsVbeLhQxFI",
   "system": {
     "description": {
       "value": "<p>A vial of thick, murky, unrefined Laublub oil in its rawest form. Too impure for a Delta Kilo Autarch to safely consume.</p><h2>Douse</h2><p>Pour charges onto the ground to coat the area with oil (radius scales with charges spent: 1 charge = 2.5 ft radius, 2 = 3.75 ft, 3 = 5 ft). Any creature entering or starting its turn there must succeed on a DC 10 + the douser's Dexterity modifier Dexterity saving throw or fall prone (and take 1d4 fire damage if the oil has been ignited; standing up requires the same save). The oil evaporates after 1 round. Igniting is GM adjudicated and grants a one-time +1 bonus to the triggering fire damage.</p><h2>Throw</h2><p>Ranged attack roll against a creature or object. On a hit, the target is coated in oil for 4 rounds. At the start of its turn, the target may spend its action and succeed on a DC 10 Dexterity saving throw to reduce the remaining duration by 5 rounds. Igniting (GM adjudicated) grants a one-time +1 bonus to the triggering fire damage.</p>",
@@ -41,7 +41,7 @@
   "activities": {
     "dkgactdouseroh0001": {
       "type": "save",
-      "_id": "dkgactdouseroh0001",
+      "_id": "XAYPcIpdLIq6bKTe",
       "name": "Douse",
       "img": "assets/img/roh.png",
       "activation": {
@@ -103,7 +103,7 @@
     },
     "dkgactthrowroh0001": {
       "type": "attack",
-      "_id": "dkgactthrowroh0001",
+      "_id": "iw7a9CBZ3jyDB0u0",
       "name": "Throw",
       "img": "assets/img/roh.png",
       "activation": {
@@ -141,8 +141,8 @@
       },
       "effects": [
         {
-          "_id": "dkgitemoileffect01",
-          "uuid": "Compendium.delta-kilo-fluid-gauge.delta-kilo-items.Item.dkgitemoileffect01"
+          "_id": "boFcyPCXNolJWluy",
+          "uuid": "Compendium.delta-kilo-fluid-gauge.delta-kilo-items.Item.boFcyPCXNolJWluy"
         }
       ]
     }
@@ -157,5 +157,5 @@
       "douseEvaporateRounds": 1
     }
   },
-  "_key": "!items!dkgitemlaublubroh1"
+  "_key": "!items!jFybGdZ69fCXIwLF"
 }

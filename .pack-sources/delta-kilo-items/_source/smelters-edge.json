@@ -1,9 +1,9 @@
 {
-  "_id": "dkgitemsmeltersed1",
+  "_id": "UleWGgwBjCIWlFrO",
   "name": "Smelters Edge",
   "type": "tool",
   "img": "assets/img/smelters_edge.png",
-  "folder": "dkgfoldertool0001",
+  "folder": "Nh05BkuNLanwxA5b",
   "system": {
     "description": {
       "value": "<p>A steampunk welding torch resembling a lightsaber hilt, its tip emitting a short jet of blue-white plasma flame. Used to repair and heal Delta Kilo Autarchs by welding damaged plating back into place. When used on a non-Autarch creature, the plasma flame instead burns and damages them.</p><h2>Construct Mending</h2><p>Target a Delta Kilo Autarch. Choose an intensity level (1-3 charges). No attack roll required.</p><h2>Plasma Burn</h2><p>Target a non-Autarch creature. Requires a successful attack roll against AC. Choose an intensity level (1-3 charges).</p><table><tr><th>Level</th><th>Charges</th><th>Formula</th></tr><tr><td>1</td><td>1</td><td>2d8 + spellcasting modifier + proficiency bonus</td></tr><tr><td>2</td><td>2</td><td>3d8 + spellcasting modifier + proficiency bonus</td></tr><tr><td>3</td><td>3</td><td>4d8 + spellcasting modifier + proficiency bonus</td></tr></table><p>If the wielder has no spellcasting ability, the spellcasting modifier is treated as +0. Charges are recovered on a short rest at a rate of the wielder's character level divided by 3 (rounded down), and fully restored on a long rest.</p>",
@@ -44,7 +44,7 @@
   "activities": {
     "dkgactconstructmd1": {
       "type": "heal",
-      "_id": "dkgactconstructmd1",
+      "_id": "NYufrmfAszQ0Ht7F",
       "name": "Construct Mending",
       "img": "assets/img/smelters_edge.png",
       "activation": {
@@ -78,7 +78,9 @@
           "enabled": true,
           "formula": "2d8 + @mod + @prof"
         },
-        "types": ["healing"],
+        "types": [
+          "healing"
+        ],
         "scaling": {
           "mode": "whole",
           "formula": "1d8"
@@ -90,7 +92,7 @@
     },
     "dkgactplasmaburn001": {
       "type": "attack",
-      "_id": "dkgactplasmaburn001",
+      "_id": "FxiIn41U0Gf9dJyW",
       "name": "Plasma Burn",
       "img": "assets/img/smelters_edge.png",
       "activation": {
@@ -133,7 +135,9 @@
               "enabled": true,
               "formula": "2d8 + @mod + @prof"
             },
-            "types": ["fire"],
+            "types": [
+              "fire"
+            ],
             "scaling": {
               "mode": "whole",
               "formula": "1d8"
@@ -153,5 +157,5 @@
       "damagesNonRace": true
     }
   },
-  "_key": "!items!dkgitemsmeltersed1"
+  "_key": "!items!UleWGgwBjCIWlFrO"
 }

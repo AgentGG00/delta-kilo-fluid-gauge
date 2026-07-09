@@ -1,5 +1,5 @@
 {
-  "_id": "dkgmacrohudtoggle1",
+  "_id": "CJezRQk6GV6JfJqG",
   "name": "Delta Kilo - Gauge HUD Toggle",
   "type": "script",
   "img": "assets/img/smelters_edge.png",
@@ -7,5 +7,5 @@
   "command": "if (!globalThis.DKG_GAUGE) {\n  ui.notifications.error(\"Delta Kilo Fluid Gauge Modul nicht geladen.\");\n} else {\n  globalThis.DKG_GAUGE.toggleHudVisibility();\n}",
   "folder": null,
   "flags": {},
-  "_key": "!macros!dkgmacrohudtoggle1"
+  "_key": "!macros!CJezRQk6GV6JfJqG"
 }

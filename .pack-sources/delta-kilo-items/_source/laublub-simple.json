@@ -1,9 +1,9 @@
 {
-  "_id": "dkgitemlaublubsim1",
+  "_id": "M7yKORYWdB7HuGKc",
   "name": "Laublub Simple gefiltert",
   "type": "consumable",
   "img": "assets/img/simple.png",
-  "folder": "dkgfolderlaublub1",
+  "folder": "FniKvBsVbeLhQxFI",
   "system": {
     "description": {
       "value": "<p>A vial of lightly filtered Laublub oil. Safe for Delta Kilo Autarchs to consume as lubricant.</p><h2>Drink</h2><p>Target a creature and choose how many charges to feed it (Consumption Scaling). Each charge consumed restores 1 hour to the target's fluid gauge, up to the 48-hour cap. Only meaningful if the target is a Delta Kilo Autarch; excess beyond the cap is wasted.</p><h2>Douse</h2><p>Pour charges onto the ground to coat the area with oil (radius scales with charges spent: 1 charge = 2.5 ft radius, 2 = 3.75 ft, 3 = 5 ft). Any creature entering or starting its turn there must succeed on a DC 10 + the douser's Dexterity modifier Dexterity saving throw or fall prone (and take 1d6 fire damage if the oil has been ignited; standing up requires the same save). The oil evaporates after 1 minute. Igniting is GM adjudicated and grants a one-time +2 bonus to the triggering fire damage.</p><h2>Throw</h2><p>Ranged attack roll against a creature or object. On a hit, the target is coated in oil for 12 rounds. At the start of its turn, the target may spend its action and succeed on a DC 10 Dexterity saving throw to reduce the remaining duration by 5 rounds. Igniting (GM adjudicated) grants a one-time +2 bonus to the triggering fire damage.</p>",
@@ -41,7 +41,7 @@
   "activities": {
     "dkgactdrinksimple01": {
       "type": "utility",
-      "_id": "dkgactdrinksimple01",
+      "_id": "4lwNnIAhTM2kzI5k",
       "name": "Drink",
       "img": "assets/img/simple.png",
       "activation": {
@@ -75,7 +75,7 @@
     },
     "dkgactdousesimple01": {
       "type": "save",
-      "_id": "dkgactdousesimple01",
+      "_id": "SuVhx94NFs0mU98M",
       "name": "Douse",
       "img": "assets/img/simple.png",
       "activation": {
@@ -137,7 +137,7 @@
     },
     "dkgactthrowsimple01": {
       "type": "attack",
-      "_id": "dkgactthrowsimple01",
+      "_id": "jEZV7AlyRjFOeLnZ",
       "name": "Throw",
       "img": "assets/img/simple.png",
       "activation": {
@@ -175,8 +175,8 @@
       },
       "effects": [
         {
-          "_id": "dkgitemoileffect01",
-          "uuid": "Compendium.delta-kilo-fluid-gauge.delta-kilo-items.Item.dkgitemoileffect01"
+          "_id": "boFcyPCXNolJWluy",
+          "uuid": "Compendium.delta-kilo-fluid-gauge.delta-kilo-items.Item.boFcyPCXNolJWluy"
         }
       ]
     }
@@ -191,5 +191,5 @@
       "douseEvaporateSeconds": 60
     }
   },
-  "_key": "!items!dkgitemlaublubsim1"
+  "_key": "!items!M7yKORYWdB7HuGKc"
 }

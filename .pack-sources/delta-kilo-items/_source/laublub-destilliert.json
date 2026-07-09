@@ -1,9 +1,9 @@
 {
-  "_id": "dkgitemlaublubdes1",
+  "_id": "jn829fATCXy7AzLL",
   "name": "Laublub Destilliert",
   "type": "consumable",
   "img": "assets/img/destiliert.png",
-  "folder": "dkgfolderlaublub1",
+  "folder": "FniKvBsVbeLhQxFI",
   "system": {
     "description": {
       "value": "<p>A vial of fully distilled Laublub oil, almost clear with a faint luminous shimmer. The purest and most potent grade, produced through distillation involving a catalyst and heat.</p><h2>Drink</h2><p>Target a creature and choose how many charges to feed it (Consumption Scaling). Each charge consumed restores 1 hour to the target's fluid gauge, up to the 48-hour cap. Only meaningful if the target is a Delta Kilo Autarch; excess beyond the cap is wasted.</p><h2>Douse</h2><p>Pour charges onto the ground to coat the area with oil (radius scales with charges spent: 1 charge = 2.5 ft radius, 2 = 3.75 ft, 3 = 5 ft). Any creature entering or starting its turn there must succeed on a DC 10 + the douser's Dexterity modifier Dexterity saving throw or fall prone (and take 1d12 fire damage if the oil has been ignited; standing up requires the same save). The oil evaporates after 2 minutes. Igniting is GM adjudicated and grants a one-time +8 bonus to the triggering fire damage.</p><h2>Throw</h2><p>Ranged attack roll against a creature or object. On a hit, the target is coated in oil for 60 rounds. At the start of its turn, the target may spend its action and succeed on a DC 10 Dexterity saving throw to reduce the remaining duration by 5 rounds. Igniting (GM adjudicated) grants a one-time +8 bonus to the triggering fire damage; the oil then continues burning for 2 rounds until the end of the target's next turn, dealing an additional 2d8 fire damage at the start of that turn (use the Throw - Continued Burn Damage activity).</p>",
@@ -41,7 +41,7 @@
   "activities": {
     "dkgactdrinkdes00001": {
       "type": "utility",
-      "_id": "dkgactdrinkdes00001",
+      "_id": "BGmuJXHOQuHAQaNh",
       "name": "Drink",
       "img": "assets/img/destiliert.png",
       "activation": {
@@ -75,7 +75,7 @@
     },
     "dkgactdousedes000001": {
       "type": "save",
-      "_id": "dkgactdousedes000001",
+      "_id": "azFYaL3eMTr2Tcr4",
       "name": "Douse",
       "img": "assets/img/destiliert.png",
       "activation": {
@@ -137,7 +137,7 @@
     },
     "dkgactthrowdes000001": {
       "type": "attack",
-      "_id": "dkgactthrowdes000001",
+      "_id": "qQ9KDFbJgKYWlu0N",
       "name": "Throw",
       "img": "assets/img/destiliert.png",
       "activation": {
@@ -175,14 +175,14 @@
       },
       "effects": [
         {
-          "_id": "dkgitemoileffect01",
-          "uuid": "Compendium.delta-kilo-fluid-gauge.delta-kilo-items.Item.dkgitemoileffect01"
+          "_id": "boFcyPCXNolJWluy",
+          "uuid": "Compendium.delta-kilo-fluid-gauge.delta-kilo-items.Item.boFcyPCXNolJWluy"
         }
       ]
     },
     "dkgactburndes0000001": {
       "type": "damage",
-      "_id": "dkgactburndes0000001",
+      "_id": "lJ2rzTRtBSgTVi0q",
       "name": "Throw - Continued Burn Damage",
       "img": "assets/img/destiliert.png",
       "activation": {
@@ -215,5 +215,5 @@
       "douseEvaporateSeconds": 120
     }
   },
-  "_key": "!items!dkgitemlaublubdes1"
+  "_key": "!items!jn829fATCXy7AzLL"
 }

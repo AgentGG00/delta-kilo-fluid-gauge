@@ -1,9 +1,9 @@
 {
-  "_id": "dkgitemstofffilt01",
+  "_id": "zf5waL5v2iJTm8kn",
   "name": "Stofffilter",
   "type": "consumable",
   "img": "assets/img/stofffillter.png",
-  "folder": "dkgfolderressour1",
+  "folder": "qt5kpil3sawqpPOB",
   "system": {
     "description": {
       "value": "<p>A small folded cloth filter pouch with tightly stitched seams. Crafted from Stoff (1 Stoff yields 5 Stofffilter). Consumed one at a time as a crafting ingredient in Laublub filtration recipes.</p>",
@@ -27,5 +27,5 @@
   },
   "effects": [],
   "flags": {},
-  "_key": "!items!dkgitemstofffilt01"
+  "_key": "!items!zf5waL5v2iJTm8kn"
 }
