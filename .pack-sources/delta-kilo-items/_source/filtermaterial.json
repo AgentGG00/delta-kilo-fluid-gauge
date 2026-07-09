@@ -1,8 +1,8 @@
 {
-  "_id": "anNHjbXHdIRDssDW",
+  "_id": "kq3VOQa7kzuGz6WE",
   "name": "Filtermaterial",
   "type": "consumable",
-  "img": "assets/img/filtermatierial.png",
+  "img": "modules/delta-kilo-fluid-gauge/assets/img/filtermatierial.png",
   "folder": "qt5kpil3sawqpPOB",
   "system": {
     "description": {
@@ -10,19 +10,10 @@
       "chat": ""
     },
     "identifier": "filtermaterial",
-    "type": {
-      "value": "trinket",
-      "subtype": ""
-    },
+    "type": { "value": "trinket", "subtype": "" },
     "rarity": "rare",
-    "price": {
-      "value": 50,
-      "denomination": "gp"
-    },
-    "weight": {
-      "value": 0.5,
-      "units": "lb"
-    },
+    "price": { "value": 50, "denomination": "gp" },
+    "weight": { "value": 0.5, "units": "lb" },
     "quantity": 1,
     "uses": {
       "max": "5",
@@ -32,5 +23,5 @@
   },
   "effects": [],
   "flags": {},
-  "_key": "!items!anNHjbXHdIRDssDW"
+  "_key": "!items!kq3VOQa7kzuGz6WE"
 }

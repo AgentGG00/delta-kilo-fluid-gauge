@@ -1,15 +1,35 @@
 {
-  "_id": "jn829fATCXy7AzLL",
+  "_id": "WuKOl3Q3XlmEnSt9",
   "name": "Laublub Destilliert",
   "type": "consumable",
-  "img": "assets/img/destiliert.png",
+  "img": "modules/delta-kilo-fluid-gauge/assets/img/destiliert.png",
   "folder": "FniKvBsVbeLhQxFI",
   "system": {
     "description": {
-      "value": "<p>A vial of fully distilled Laublub oil, almost clear with a faint luminous shimmer. The purest and most potent grade, produced through distillation involving a catalyst and heat.</p><h2>Drink</h2><p>Target a creature and choose how many charges to feed it (Consumption Scaling). Each charge consumed restores 1 hour to the target's fluid gauge, up to the 48-hour cap. Only meaningful if the target is a Delta Kilo Autarch; excess beyond the cap is wasted.</p><h2>Douse</h2><p>Pour charges onto the ground to coat the area with oil (radius scales with charges spent: 1 charge = 2.5 ft radius, 2 = 3.75 ft, 3 = 5 ft). Any creature entering or starting its turn there must succeed on a DC 10 + the douser's Dexterity modifier Dexterity saving throw or fall prone (and take 1d12 fire damage if the oil has been ignited; standing up requires the same save). The oil evaporates after 2 minutes. Igniting is GM adjudicated and grants a one-time +8 bonus to the triggering fire damage.</p><h2>Throw</h2><p>Ranged attack roll against a creature or object. On a hit, the target is coated in oil for 60 rounds. At the start of its turn, the target may spend its action and succeed on a DC 10 Dexterity saving throw to reduce the remaining duration by 5 rounds. Igniting (GM adjudicated) grants a one-time +8 bonus to the triggering fire damage; the oil then continues burning for 2 rounds until the end of the target's next turn, dealing an additional 2d8 fire damage at the start of that turn (use the Throw - Continued Burn Damage activity).</p>",
+      "value": "<p>A vial of fully distilled Laublub oil, almost clear with a faint luminous shimmer. The purest and most potent grade.</p><h2>Drink</h2><p>Target a creature and choose how many charges to feed it (Consumption Scaling). Each charge consumed restores 1 hour to the target's fluid gauge, up to the 48-hour cap.</p><h2>Douse</h2><p>Pour charges onto the ground to coat the area with oil (radius scales with charges spent: 1 charge = 2.5 ft radius, 2 = 3.75 ft, 3 = 5 ft). Any creature entering or starting its turn there must succeed on a DC 10 + the douser's Dexterity modifier Dexterity saving throw or fall prone (and take 1d12 fire damage if the oil has been ignited; standing up requires the same save). The oil evaporates after 2 minutes. Igniting is GM adjudicated and grants a one-time +8 bonus to the triggering fire damage.</p><h2>Throw</h2><p>Ranged attack roll against a creature or object. On a hit, the target is coated in oil for 60 rounds. At the start of its turn, the target may spend its action and succeed on a DC 10 Dexterity saving throw to reduce the remaining duration by 5 rounds. Igniting (GM adjudicated) grants a one-time +8 bonus to the triggering fire damage; the oil then continues burning for 2 rounds until the end of the target's next turn, dealing an additional 2d8 fire damage at the start of that turn (use the Continued Burn Damage activity).</p>",
       "chat": ""
     },
-    "identifier": "laublub-destilliert",
+    "source": {
+      "custom": "AgentGG Homebrew",
+      "book": "",
+      "page": "",
+      "license": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "quantity": 1,
+    "weight": {
+      "value": 0.5,
+      "units": "lb"
+    },
+    "price": {
+      "value": 100,
+      "denomination": "gp"
+    },
+    "attuned": false,
+    "equipped": false,
+    "identified": true,
+    "rarity": "",
     "type": {
       "value": "trinket",
       "subtype": ""
@@ -17,16 +37,7 @@
     "properties": [
       "gear"
     ],
-    "rarity": "",
-    "price": {
-      "value": 100,
-      "denomination": "gp"
-    },
-    "weight": {
-      "value": 0.5,
-      "units": "lb"
-    },
-    "quantity": 1,
+    "attunement": "",
     "uses": {
       "max": "60",
       "spent": 0,
@@ -36,173 +47,362 @@
           "type": "recoverAll"
         }
       ]
-    }
-  },
-  "activities": {
-    "dkgactdrinkdes00001": {
-      "type": "utility",
-      "_id": "BGmuJXHOQuHAQaNh",
-      "name": "Drink",
-      "img": "assets/img/destiliert.png",
-      "activation": {
-        "type": "action",
-        "value": 1
-      },
-      "consumption": {
-        "targets": [
-          {
-            "type": "itemUses",
-            "value": "1"
-          }
-        ],
-        "scaling": {
-          "allowed": true,
-          "max": "60"
-        }
-      },
-      "target": {
-        "affects": {
-          "count": "1",
-          "type": "creature"
-        }
-      },
-      "roll": {
-        "prompt": false
-      },
-      "description": {
-        "chatFlavor": "Each charge fed to the target restores 1 hour to their fluid gauge (handled via module socket; GM client applies the update)."
-      }
     },
-    "dkgactdousedes000001": {
-      "type": "save",
-      "_id": "azFYaL3eMTr2Tcr4",
-      "name": "Douse",
-      "img": "assets/img/destiliert.png",
-      "activation": {
-        "type": "action",
-        "value": 1
-      },
-      "consumption": {
-        "targets": [
-          {
-            "type": "itemUses",
-            "value": "1"
-          }
-        ],
-        "scaling": {
-          "allowed": true,
-          "max": "3"
-        }
-      },
-      "target": {
-        "template": {
-          "type": "circle",
-          "size": "2.5",
-          "units": "ft"
+    "magicalBonus": "0",
+    "damage": {
+      "base": {
+        "types": [],
+        "custom": {
+          "enabled": false
         },
-        "affects": {
-          "type": "creature"
+        "scaling": {
+          "number": 1
         }
       },
-      "save": {
-        "ability": [
-          "dex"
-        ],
-        "dc": {
-          "calculation": "",
-          "formula": "10 + @abilities.dex.mod"
-        }
-      },
-      "damage": {
-        "onSave": "full",
-        "parts": [
-          {
-            "number": 1,
-            "denomination": 12,
-            "types": [
-              "fire"
-            ],
-            "custom": {
-              "enabled": false
+      "replace": false
+    },
+    "activities": {
+      "uzxNvW6RdttbFalW": {
+        "_id": "uzxNvW6RdttbFalW",
+        "name": "Drink",
+        "type": "utility",
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "scaling": {}
             }
+          ],
+          "scaling": {
+            "allowed": true,
+            "max": "60"
+          },
+          "spellSlot": true
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": "",
+            "stationary": false
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false
+          },
+          "override": false,
+          "prompt": true
+        },
+        "range": {
+          "units": "self",
+          "override": false
+        },
+        "img": "systems/dnd5e/icons/svg/trait-saves.svg",
+        "sort": 0,
+        "description": {
+          "chatFlavor": "Each charge fed to the target restores 1 hour to their fluid gauge (handled via module socket; GM client applies the update)."
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "flags": {},
+        "uses": {
+          "spent": 0,
+          "recovery": []
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "visibility": {
+          "level": {},
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false
+        }
+      },
+      "Y0bQWKfnBy3T8IN7": {
+        "_id": "Y0bQWKfnBy3T8IN7",
+        "name": "Douse",
+        "type": "save",
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": true,
+            "max": "3"
+          },
+          "spellSlot": true
+        },
+        "target": {
+          "template": {
+            "type": "circle",
+            "size": "2.5",
+            "units": "ft",
+            "contiguous": false,
+            "stationary": false
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false
+          },
+          "override": false,
+          "prompt": true
+        },
+        "range": {
+          "units": "ft",
+          "value": "5",
+          "override": false
+        },
+        "save": {
+          "ability": [
+            "dex"
+          ],
+          "dc": {
+            "calculation": "",
+            "formula": "10 + @abilities.dex.mod"
           }
-        ]
+        },
+        "damage": {
+          "onSave": "full",
+          "parts": [
+            {
+              "bonus": "",
+              "types": [
+                "fire"
+              ],
+              "custom": {
+                "enabled": false
+              },
+              "scaling": {
+                "number": 1
+              },
+              "number": 1,
+              "denomination": 12
+            }
+          ],
+          "critical": {
+            "allow": false
+          }
+        },
+        "img": null,
+        "sort": 10,
+        "description": {
+          "chatFlavor": "Failure: fall prone. Fire damage applies once ignited (GM adjudicated), regardless of save result."
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "flags": {},
+        "uses": {
+          "spent": 0,
+          "recovery": []
+        },
+        "visibility": {
+          "level": {},
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false
+        }
       },
-      "roll": {
-        "prompt": false
+      "lMwODEEYrCumyCbN": {
+        "_id": "lMwODEEYrCumyCbN",
+        "name": "Throw",
+        "type": "attack",
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": "",
+            "stationary": false
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false
+          },
+          "override": false,
+          "prompt": true
+        },
+        "range": {
+          "units": "ft",
+          "value": "20",
+          "long": null,
+          "override": false
+        },
+        "attack": {
+          "ability": "dex",
+          "bonus": "max(@abilities.dex.mod, @abilities.str.mod) - @abilities.dex.mod",
+          "critical": {},
+          "flat": false,
+          "type": {
+            "value": "ranged",
+            "classification": "weapon"
+          }
+        },
+        "damage": {
+          "critical": {
+            "allow": false
+          },
+          "includeBase": false,
+          "parts": []
+        },
+        "img": null,
+        "sort": 20,
+        "description": {
+          "chatFlavor": "On a hit, the target is coated in oil for 60 rounds (Destilliert). Wipe off with DC 10 Dexterity save as an action (reduces remaining duration by 5 rounds). Igniting grants a one-time +8 bonus and continues burning 2 rounds (use Continued Burn Damage)."
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "F6AzGCLze2xkWBzq",
+            "uuid": "Compendium.delta-kilo-fluid-gauge.delta-kilo-items.Item.F6AzGCLze2xkWBzq"
+          }
+        ],
+        "flags": {},
+        "uses": {
+          "spent": 0,
+          "recovery": []
+        },
+        "visibility": {
+          "level": {},
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false
+        }
       },
-      "description": {
-        "chatFlavor": "Failure: fall prone. Fire damage applies to anyone in the area once ignited (GM adjudicated), regardless of save result. Standing up requires the same save. Oil evaporates after 2 minutes."
+      "kLP0pRHRVo5tu8Qz": {
+        "_id": "kLP0pRHRVo5tu8Qz",
+        "name": "Continued Burn Damage",
+        "type": "damage",
+        "activation": {
+          "type": "special",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": "",
+            "stationary": false
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false
+          },
+          "override": false,
+          "prompt": true
+        },
+        "range": {
+          "units": "self",
+          "override": false
+        },
+        "damage": {
+          "parts": [
+            {
+              "bonus": "",
+              "types": [
+                "fire"
+              ],
+              "custom": {
+                "enabled": false
+              },
+              "scaling": {
+                "number": 1
+              },
+              "number": 2,
+              "denomination": 8
+            }
+          ],
+          "critical": {
+            "allow": false
+          }
+        },
+        "img": null,
+        "sort": 30,
+        "description": {
+          "chatFlavor": "One-time follow-up damage at the start of the target's next turn after ignition (Destilliert only)."
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "flags": {},
+        "uses": {
+          "spent": 0,
+          "recovery": []
+        },
+        "visibility": {
+          "level": {},
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false
+        }
       }
     },
-    "dkgactthrowdes000001": {
-      "type": "attack",
-      "_id": "qQ9KDFbJgKYWlu0N",
-      "name": "Throw",
-      "img": "assets/img/destiliert.png",
-      "activation": {
-        "type": "action",
-        "value": 1
-      },
-      "consumption": {
-        "targets": [
-          {
-            "type": "itemUses",
-            "value": "1"
-          }
-        ]
-      },
-      "attack": {
-        "ability": "dex",
-        "bonus": "max(@abilities.dex.mod, @abilities.str.mod) - @abilities.dex.mod",
-        "type": {
-          "value": "ranged",
-          "classification": "weapon"
-        }
-      },
-      "range": {
-        "value": 20,
-        "units": "ft"
-      },
-      "target": {
-        "affects": {
-          "count": "1",
-          "type": "creature"
-        }
-      },
-      "description": {
-        "chatFlavor": "On a hit, the target is coated in oil for 60 rounds (Destilliert). Wipe off with DC 10 Dexterity save as an action (reduces remaining duration by 5 rounds). Igniting (GM adjudicated) grants a one-time +8 bonus to triggering fire damage, then continues burning for 2 rounds until the end of the target's next turn (use Throw - Continued Burn Damage for the follow-up 2d8)."
-      },
-      "effects": [
-        {
-          "_id": "boFcyPCXNolJWluy",
-          "uuid": "Compendium.delta-kilo-fluid-gauge.delta-kilo-items.Item.boFcyPCXNolJWluy"
-        }
-      ]
+    "identifier": "laublub-destilliert",
+    "unidentified": {
+      "description": ""
     },
-    "dkgactburndes0000001": {
-      "type": "damage",
-      "_id": "lJ2rzTRtBSgTVi0q",
-      "name": "Throw - Continued Burn Damage",
-      "img": "assets/img/destiliert.png",
-      "activation": {
-        "type": "special"
-      },
-      "damage": {
-        "parts": [
-          {
-            "number": 2,
-            "denomination": 8,
-            "types": [
-              "fire"
-            ]
-          }
-        ]
-      },
-      "description": {
-        "chatFlavor": "One-time follow-up damage at the start of the target's next turn after ignition (Destilliert only)."
-      }
-    }
+    "container": null
   },
   "effects": [],
   "flags": {
@@ -215,5 +415,5 @@
       "douseEvaporateSeconds": 120
     }
   },
-  "_key": "!items!jn829fATCXy7AzLL"
+  "_key": "!items!WuKOl3Q3XlmEnSt9"
 }

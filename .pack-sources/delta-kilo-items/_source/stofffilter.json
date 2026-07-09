@@ -1,8 +1,8 @@
 {
-  "_id": "zf5waL5v2iJTm8kn",
+  "_id": "Z4YHnFy1F5CNErxu",
   "name": "Stofffilter",
   "type": "consumable",
-  "img": "assets/img/stofffillter.png",
+  "img": "modules/delta-kilo-fluid-gauge/assets/img/stofffillter.png",
   "folder": "qt5kpil3sawqpPOB",
   "system": {
     "description": {
@@ -10,22 +10,13 @@
       "chat": ""
     },
     "identifier": "stofffilter",
-    "type": {
-      "value": "trinket",
-      "subtype": ""
-    },
+    "type": { "value": "trinket", "subtype": "" },
     "rarity": "common",
-    "price": {
-      "value": 25,
-      "denomination": "gp"
-    },
-    "weight": {
-      "value": 0.25,
-      "units": "lb"
-    },
+    "price": { "value": 25, "denomination": "gp" },
+    "weight": { "value": 0.25, "units": "lb" },
     "quantity": 1
   },
   "effects": [],
   "flags": {},
-  "_key": "!items!zf5waL5v2iJTm8kn"
+  "_key": "!items!Z4YHnFy1F5CNErxu"
 }

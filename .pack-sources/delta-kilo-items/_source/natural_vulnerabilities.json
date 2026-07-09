@@ -1,0 +1,95 @@
+{
+  "_id": "jJzL4dApcpIDeY8a",
+  "name": "Natural Vulnerabilities",
+  "type": "feat",
+  "img": "modules/delta-kilo-fluid-gauge/assets/img/autarchenrace.png",
+  "folder": "kB0KxrqWGas1ukkJ",
+  "system": {
+    "description": {
+      "value": "<p>Due to your artificial construction, you have vulnerability to lightning, cold, and acid damage. Additionally, your systems are not waterproof: when you are fully submerged in water or heavily soaked, you have disadvantage on Dexterity saving throws. This disadvantage persists for 24 hours after being fully submerged.</p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "AgentGG Homebrew",
+      "book": "",
+      "page": "",
+      "license": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "race",
+      "subtype": ""
+    },
+    "requirements": "Delta Kilo Modell (A)",
+    "properties": [],
+    "activities": {},
+    "enchant": {},
+    "prerequisites": {
+      "level": null,
+      "items": [],
+      "repeatable": false
+    },
+    "identifier": "natural-vulnerabilities",
+    "advancement": {},
+    "crewed": false
+  },
+  "effects": [
+    {
+      "name": "Natural Vulnerabilities",
+      "img": "modules/delta-kilo-fluid-gauge/assets/img/autarchenrace.png",
+      "_id": "yTLYUYhO0oCkm0GH",
+      "type": "base",
+      "system": {
+        "changes": [
+          {
+            "key": "system.traits.dv.value",
+            "value": "lightning",
+            "priority": 20,
+            "type": "add",
+            "phase": "initial"
+          },
+          {
+            "key": "system.traits.dv.value",
+            "value": "cold",
+            "priority": 20,
+            "type": "add",
+            "phase": "initial"
+          },
+          {
+            "key": "system.traits.dv.value",
+            "value": "acid",
+            "priority": 20,
+            "type": "add",
+            "phase": "initial"
+          }
+        ]
+      },
+      "disabled": false,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
+      "_key": "!items.effects!jJzL4dApcpIDeY8a.yTLYUYhO0oCkm0GH"
+    }
+  ],
+  "flags": {},
+  "_key": "!items!jJzL4dApcpIDeY8a"
+}

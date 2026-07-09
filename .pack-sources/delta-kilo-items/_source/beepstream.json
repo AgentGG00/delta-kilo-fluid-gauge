@@ -1,0 +1,45 @@
+{
+  "_id": "hQjApGAUklr0XuXo",
+  "name": "Beepstream",
+  "type": "feat",
+  "img": "modules/delta-kilo-fluid-gauge/assets/img/autarchenrace.png",
+  "system": {
+    "description": {
+      "value": "<p>You are capable of understanding and communicating in Beepstream, the acoustic signal language used by Autarchs. Beepstream consists of structured tonal patterns commonly rendered as short, medium, and long pulses. Beepstream is unintelligible to most creatures and cannot be understood by spells such as Comprehend Languages or Tongues unless specifically adapted to machine-coded acoustic patterns.</p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "AgentGG Homebrew",
+      "book": "",
+      "page": "",
+      "license": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "race",
+      "subtype": ""
+    },
+    "requirements": "Delta Kilo Modell (A)",
+    "properties": [],
+    "activities": {},
+    "enchant": {},
+    "prerequisites": {
+      "level": null,
+      "items": [],
+      "repeatable": false
+    },
+    "identifier": "beepstream",
+    "advancement": {},
+    "crewed": false
+  },
+  "effects": [],
+  "folder": "kB0KxrqWGas1ukkJ",
+  "flags": {},
+  "_key": "!items!hQjApGAUklr0XuXo"
+}

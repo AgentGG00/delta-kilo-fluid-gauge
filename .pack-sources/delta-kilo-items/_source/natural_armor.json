@@ -1,0 +1,81 @@
+{
+  "_id": "oEOIRos9mTWAtpZG",
+  "name": "Natural Armor",
+  "type": "feat",
+  "img": "modules/delta-kilo-fluid-gauge/assets/img/autarchenrace.png",
+  "folder": "kB0KxrqWGas1ukkJ",
+  "system": {
+    "description": {
+      "value": "<p>Reinforced with rare metals, the outer layer of the Delta Kilo models grants a +3 bonus to Armor Class. No additional armour can be worn, as no known armour is compatible with the Autarch frame.</p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "AgentGG Homebrew",
+      "book": "",
+      "page": "",
+      "license": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "race",
+      "subtype": ""
+    },
+    "requirements": "Delta Kilo Modell (A)",
+    "properties": [],
+    "activities": {},
+    "enchant": {},
+    "prerequisites": {
+      "level": null,
+      "items": [],
+      "repeatable": false
+    },
+    "identifier": "natural-armor",
+    "advancement": {},
+    "crewed": false
+  },
+  "effects": [
+    {
+      "name": "Natural Armor",
+      "img": "modules/delta-kilo-fluid-gauge/assets/img/autarchenrace.png",
+      "_id": "NCyAyv8Ibmx0OJmW",
+      "type": "base",
+      "system": {
+        "changes": [
+          {
+            "key": "system.attributes.ac.bonus",
+            "value": "3",
+            "priority": 20,
+            "type": "add",
+            "phase": "initial"
+          }
+        ]
+      },
+      "disabled": false,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
+      "_key": "!items.effects!oEOIRos9mTWAtpZG.NCyAyv8Ibmx0OJmW"
+    }
+  ],
+  "flags": {},
+  "_key": "!items!oEOIRos9mTWAtpZG"
+}

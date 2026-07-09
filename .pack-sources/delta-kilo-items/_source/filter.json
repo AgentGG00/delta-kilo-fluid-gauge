@@ -1,8 +1,8 @@
 {
-  "_id": "EDGbT9UGAoFlNh7o",
+  "_id": "bM0Sq0HFDetAwKsp",
   "name": "Filter",
   "type": "tool",
-  "img": "assets/img/filter.png",
+  "img": "modules/delta-kilo-fluid-gauge/assets/img/filter.png",
   "folder": "qt5kpil3sawqpPOB",
   "system": {
     "description": {
@@ -10,23 +10,14 @@
       "chat": ""
     },
     "identifier": "filter",
-    "type": {
-      "value": "art",
-      "subtype": ""
-    },
+    "type": { "value": "art", "subtype": "" },
     "rarity": "rare",
-    "price": {
-      "value": 2500,
-      "denomination": "gp"
-    },
-    "weight": {
-      "value": 2,
-      "units": "lb"
-    },
+    "price": { "value": 2500, "denomination": "gp" },
+    "weight": { "value": 2, "units": "lb" },
     "quantity": 1,
     "proficient": null
   },
   "effects": [],
   "flags": {},
-  "_key": "!items!EDGbT9UGAoFlNh7o"
+  "_key": "!items!bM0Sq0HFDetAwKsp"
 }

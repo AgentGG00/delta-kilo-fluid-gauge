@@ -1,40 +1,72 @@
 {
-  "_id": "boFcyPCXNolJWluy",
+  "_id": "F6AzGCLze2xkWBzq",
   "name": "Mit Öl bedeckt",
   "type": "feat",
-  "img": "assets/img/roh.png",
+  "img": "modules/delta-kilo-fluid-gauge/assets/img/roh.png",
   "folder": "kB0KxrqWGas1ukkJ",
   "system": {
     "description": {
-      "value": "<p>Das Ziel ist mit Laublub-Öl bedeckt. Dauer skaliert mit der Reinheitsstufe des geworfenen Öls (in Sekunden, via worldTime getrackt).</p>",
+      "value": "<p>Das Ziel ist mit Laublub-Öl bedeckt. Dauer skaliert mit der Reinheitsstufe des geworfenen Öls (in Sekunden, via worldTime getrackt). Kann zu Rundenbeginn mit einer Action und einem DC 10 Dexterity-Save abgewischt werden.</p>",
       "chat": ""
     },
-    "type": {
-      "value": "",
-      "subtype": ""
+    "source": {
+      "custom": "AgentGG Homebrew",
+      "book": "",
+      "page": "",
+      "license": "",
+      "rules": "2024",
+      "revision": 1
     },
-    "activities": {}
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": { "value": "race", "subtype": "" },
+    "requirements": "",
+    "properties": [],
+    "activities": {},
+    "enchant": {},
+    "prerequisites": { "level": null, "items": [], "repeatable": false },
+    "identifier": "mit-oel-bedeckt",
+    "advancement": {},
+    "crewed": false
   },
   "effects": [
     {
-      "_id": "GpcXsRaXGfLJZfvR",
       "name": "Mit Öl bedeckt",
-      "img": "assets/img/roh.png",
-      "changes": [],
+      "img": "modules/delta-kilo-fluid-gauge/assets/img/roh.png",
+      "_id": "eU4rdVUCt8GfsIIR",
+      "type": "base",
+      "system": {
+        "changes": []
+      },
       "disabled": false,
-      "transfer": false,
       "duration": {
+        "value": 4,
+        "units": "rounds",
+        "expiry": null,
+        "expired": false,
         "seconds": 24
       },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "sort": 0,
       "flags": {
         "dkg": {
           "isOilEffect": true,
           "remainingRounds": 4
         }
       },
-      "_key": "!items.effects!dkgitemoileffect01.dkgeffectoilstat01"
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
+      "_key": "!items.effects!F6AzGCLze2xkWBzq.eU4rdVUCt8GfsIIR"
     }
   ],
   "flags": {},
-  "_key": "!items!boFcyPCXNolJWluy"
+  "_key": "!items!F6AzGCLze2xkWBzq"
 }

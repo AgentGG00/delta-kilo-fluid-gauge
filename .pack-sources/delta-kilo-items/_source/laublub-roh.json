@@ -1,15 +1,35 @@
 {
-  "_id": "jFybGdZ69fCXIwLF",
+  "_id": "VkQNKllAMv8XRUN8",
   "name": "Laublub Roh",
   "type": "consumable",
-  "img": "assets/img/roh.png",
+  "img": "modules/delta-kilo-fluid-gauge/assets/img/roh.png",
   "folder": "FniKvBsVbeLhQxFI",
   "system": {
     "description": {
       "value": "<p>A vial of thick, murky, unrefined Laublub oil in its rawest form. Too impure for a Delta Kilo Autarch to safely consume.</p><h2>Douse</h2><p>Pour charges onto the ground to coat the area with oil (radius scales with charges spent: 1 charge = 2.5 ft radius, 2 = 3.75 ft, 3 = 5 ft). Any creature entering or starting its turn there must succeed on a DC 10 + the douser's Dexterity modifier Dexterity saving throw or fall prone (and take 1d4 fire damage if the oil has been ignited; standing up requires the same save). The oil evaporates after 1 round. Igniting is GM adjudicated and grants a one-time +1 bonus to the triggering fire damage.</p><h2>Throw</h2><p>Ranged attack roll against a creature or object. On a hit, the target is coated in oil for 4 rounds. At the start of its turn, the target may spend its action and succeed on a DC 10 Dexterity saving throw to reduce the remaining duration by 5 rounds. Igniting (GM adjudicated) grants a one-time +1 bonus to the triggering fire damage.</p>",
       "chat": ""
     },
-    "identifier": "laublub-roh",
+    "source": {
+      "custom": "AgentGG Homebrew",
+      "book": "",
+      "page": "",
+      "license": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "quantity": 1,
+    "weight": {
+      "value": 0.5,
+      "units": "lb"
+    },
+    "price": {
+      "value": 5,
+      "denomination": "gp"
+    },
+    "attuned": false,
+    "equipped": false,
+    "identified": true,
+    "rarity": "",
     "type": {
       "value": "trinket",
       "subtype": ""
@@ -17,16 +37,7 @@
     "properties": [
       "gear"
     ],
-    "rarity": "",
-    "price": {
-      "value": 5,
-      "denomination": "gp"
-    },
-    "weight": {
-      "value": 0.5,
-      "units": "lb"
-    },
-    "quantity": 1,
+    "attunement": "",
     "uses": {
       "max": "4",
       "spent": 0,
@@ -36,116 +47,213 @@
           "type": "recoverAll"
         }
       ]
-    }
-  },
-  "activities": {
-    "dkgactdouseroh0001": {
-      "type": "save",
-      "_id": "XAYPcIpdLIq6bKTe",
-      "name": "Douse",
-      "img": "assets/img/roh.png",
-      "activation": {
-        "type": "action",
-        "value": 1
-      },
-      "consumption": {
-        "targets": [
-          {
-            "type": "itemUses",
-            "value": "1"
-          }
-        ],
-        "scaling": {
-          "allowed": true,
-          "max": "3"
-        }
-      },
-      "target": {
-        "template": {
-          "type": "circle",
-          "size": "2.5",
-          "units": "ft"
+    },
+    "magicalBonus": "0",
+    "damage": {
+      "base": {
+        "types": [],
+        "custom": {
+          "enabled": false
         },
-        "affects": {
-          "type": "creature"
+        "scaling": {
+          "number": 1
         }
       },
-      "save": {
-        "ability": [
-          "dex"
-        ],
-        "dc": {
-          "calculation": "",
-          "formula": "10 + @abilities.dex.mod"
-        }
-      },
-      "damage": {
-        "onSave": "full",
-        "parts": [
-          {
-            "number": 1,
-            "denomination": 4,
-            "types": [
-              "fire"
-            ],
-            "custom": {
-              "enabled": false
+      "replace": false
+    },
+    "activities": {
+      "m8r7L7rpRTF6Mmvf": {
+        "_id": "m8r7L7rpRTF6Mmvf",
+        "name": "Douse",
+        "type": "save",
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "scaling": {}
             }
+          ],
+          "scaling": {
+            "allowed": true,
+            "max": "3"
+          },
+          "spellSlot": true
+        },
+        "target": {
+          "template": {
+            "type": "circle",
+            "size": "2.5",
+            "units": "ft",
+            "contiguous": false,
+            "stationary": false
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false
+          },
+          "override": false,
+          "prompt": true
+        },
+        "range": {
+          "units": "ft",
+          "value": "5",
+          "override": false
+        },
+        "save": {
+          "ability": [
+            "dex"
+          ],
+          "dc": {
+            "calculation": "",
+            "formula": "10 + @abilities.dex.mod"
           }
-        ]
+        },
+        "damage": {
+          "onSave": "full",
+          "parts": [
+            {
+              "bonus": "",
+              "types": [
+                "fire"
+              ],
+              "custom": {
+                "enabled": false
+              },
+              "scaling": {
+                "number": 1
+              },
+              "number": 1,
+              "denomination": 4
+            }
+          ],
+          "critical": {
+            "allow": false
+          }
+        },
+        "img": null,
+        "sort": 0,
+        "description": {
+          "chatFlavor": "Failure: fall prone. Fire damage applies once ignited (GM adjudicated), regardless of save result."
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "flags": {},
+        "uses": {
+          "spent": 0,
+          "recovery": []
+        },
+        "visibility": {
+          "level": {},
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false
+        }
       },
-      "roll": {
-        "prompt": false
-      },
-      "description": {
-        "chatFlavor": "Failure: fall prone. Fire damage applies to anyone in the area once ignited (GM adjudicated), regardless of save result. Standing up requires the same save. Oil evaporates after 1 round."
+      "gpRpe2bPNVF34bui": {
+        "_id": "gpRpe2bPNVF34bui",
+        "name": "Throw",
+        "type": "attack",
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": "",
+            "stationary": false
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false
+          },
+          "override": false,
+          "prompt": true
+        },
+        "range": {
+          "units": "ft",
+          "value": "20",
+          "long": null,
+          "override": false
+        },
+        "attack": {
+          "ability": "dex",
+          "bonus": "max(@abilities.dex.mod, @abilities.str.mod) - @abilities.dex.mod",
+          "critical": {},
+          "flat": false,
+          "type": {
+            "value": "ranged",
+            "classification": "weapon"
+          }
+        },
+        "damage": {
+          "critical": {
+            "allow": false
+          },
+          "includeBase": false,
+          "parts": []
+        },
+        "img": null,
+        "sort": 10,
+        "description": {
+          "chatFlavor": "On a hit, the target is coated in oil for 4 rounds (Roh). Wipe off with DC 10 Dexterity save as an action (reduces remaining duration by 5 rounds). Igniting (GM adjudicated) grants a one-time +1 bonus to triggering fire damage."
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "F6AzGCLze2xkWBzq",
+            "uuid": "Compendium.delta-kilo-fluid-gauge.delta-kilo-items.Item.F6AzGCLze2xkWBzq"
+          }
+        ],
+        "flags": {},
+        "uses": {
+          "spent": 0,
+          "recovery": []
+        },
+        "visibility": {
+          "level": {},
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false
+        }
       }
     },
-    "dkgactthrowroh0001": {
-      "type": "attack",
-      "_id": "iw7a9CBZ3jyDB0u0",
-      "name": "Throw",
-      "img": "assets/img/roh.png",
-      "activation": {
-        "type": "action",
-        "value": 1
-      },
-      "consumption": {
-        "targets": [
-          {
-            "type": "itemUses",
-            "value": "1"
-          }
-        ]
-      },
-      "attack": {
-        "ability": "dex",
-        "bonus": "max(@abilities.dex.mod, @abilities.str.mod) - @abilities.dex.mod",
-        "type": {
-          "value": "ranged",
-          "classification": "weapon"
-        }
-      },
-      "range": {
-        "value": 20,
-        "units": "ft"
-      },
-      "target": {
-        "affects": {
-          "count": "1",
-          "type": "creature"
-        }
-      },
-      "description": {
-        "chatFlavor": "On a hit, the target is coated in oil for 4 rounds (Roh). Wipe off with DC 10 Dexterity save as an action (reduces remaining duration by 5 rounds). Igniting (GM adjudicated) grants a one-time +1 bonus to triggering fire damage."
-      },
-      "effects": [
-        {
-          "_id": "boFcyPCXNolJWluy",
-          "uuid": "Compendium.delta-kilo-fluid-gauge.delta-kilo-items.Item.boFcyPCXNolJWluy"
-        }
-      ]
-    }
+    "identifier": "laublub-roh",
+    "unidentified": {
+      "description": ""
+    },
+    "container": null
   },
   "effects": [],
   "flags": {
@@ -154,8 +262,8 @@
       "hoursValue": 4,
       "throwDurationRounds": 4,
       "igniteBonus": 1,
-      "douseEvaporateRounds": 1
+      "douseEvaporateSeconds": 6
     }
   },
-  "_key": "!items!jFybGdZ69fCXIwLF"
+  "_key": "!items!VkQNKllAMv8XRUN8"
 }

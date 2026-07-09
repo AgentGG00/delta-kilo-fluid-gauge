@@ -1,8 +1,8 @@
 {
-  "_id": "C1mufujC0KomWfNS",
+  "_id": "IjFUKNiNl49gl4hc",
   "name": "Stoff",
   "type": "loot",
-  "img": "assets/img/stoff.png",
+  "img": "modules/delta-kilo-fluid-gauge/assets/img/stoff.png",
   "folder": "qt5kpil3sawqpPOB",
   "system": {
     "description": {
@@ -10,22 +10,13 @@
       "chat": ""
     },
     "identifier": "stoff",
-    "type": {
-      "value": "material",
-      "subtype": ""
-    },
+    "type": { "value": "material", "subtype": "" },
     "rarity": "common",
-    "price": {
-      "value": 15,
-      "denomination": "gp"
-    },
-    "weight": {
-      "value": 1,
-      "units": "lb"
-    },
+    "price": { "value": 15, "denomination": "gp" },
+    "weight": { "value": 1, "units": "lb" },
     "quantity": 1
   },
   "effects": [],
   "flags": {},
-  "_key": "!items!C1mufujC0KomWfNS"
+  "_key": "!items!IjFUKNiNl49gl4hc"
 }

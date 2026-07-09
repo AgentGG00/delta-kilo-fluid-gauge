@@ -1,0 +1,45 @@
+{
+  "_id": "60nBaWhDWc0qfbyP",
+  "name": "Sleep Mode",
+  "type": "feat",
+  "img": "modules/delta-kilo-fluid-gauge/assets/img/autarchenrace.png",
+  "system": {
+    "description": {
+      "value": "<p>To gain the benefits of a long rest, the Autarch must enter rest mode for 6 hours. In this state, it is motionless but fully conscious and can see and hear as normal.</p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "AgentGG Homebrew",
+      "book": "",
+      "page": "",
+      "license": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "race",
+      "subtype": ""
+    },
+    "requirements": "Delta Kilo Modell (A)",
+    "properties": [],
+    "activities": {},
+    "enchant": {},
+    "prerequisites": {
+      "level": null,
+      "items": [],
+      "repeatable": false
+    },
+    "identifier": "sleep-mode",
+    "advancement": {},
+    "crewed": false
+  },
+  "effects": [],
+  "folder": "kB0KxrqWGas1ukkJ",
+  "flags": {},
+  "_key": "!items!60nBaWhDWc0qfbyP"
+}

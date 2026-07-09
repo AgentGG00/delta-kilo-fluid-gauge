@@ -1,0 +1,81 @@
+{
+  "_id": "OfakMVtsAfIY4x4W",
+  "name": "Sensoric",
+  "type": "feat",
+  "img": "modules/delta-kilo-fluid-gauge/assets/img/autarchenrace.png",
+  "folder": "kB0KxrqWGas1ukkJ",
+  "system": {
+    "description": {
+      "value": "<p>You have proficiency in the Perception skill.</p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "AgentGG Homebrew",
+      "book": "",
+      "page": "",
+      "license": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "race",
+      "subtype": ""
+    },
+    "requirements": "Delta Kilo Modell (A)",
+    "properties": [],
+    "activities": {},
+    "enchant": {},
+    "prerequisites": {
+      "level": null,
+      "items": [],
+      "repeatable": false
+    },
+    "identifier": "sensoric",
+    "advancement": {},
+    "crewed": false
+  },
+  "effects": [
+    {
+      "name": "Sensoric",
+      "img": "modules/delta-kilo-fluid-gauge/assets/img/autarchenrace.png",
+      "_id": "vDPBg9uEIwlxHVvj",
+      "type": "base",
+      "system": {
+        "changes": [
+          {
+            "key": "system.skills.prc.value",
+            "value": "1",
+            "priority": 20,
+            "type": "override",
+            "phase": "initial"
+          }
+        ]
+      },
+      "disabled": false,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
+      "_key": "!items.effects!OfakMVtsAfIY4x4W.vDPBg9uEIwlxHVvj"
+    }
+  ],
+  "flags": {},
+  "_key": "!items!OfakMVtsAfIY4x4W"
+}

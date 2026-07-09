@@ -1,123 +1,93 @@
 {
-  "_id": "4hZNxjVJ2qLusZK4",
+  "_id": "2J68bnN1KBQT7jYM",
   "name": "Delta Kilo Modell (A)",
   "type": "race",
-  "img": "assets/img/autarchenrace.png",
+  "img": "modules/delta-kilo-fluid-gauge/assets/img/autarchenrace.png",
   "folder": "DfptSUPAOoXHIVCl",
   "system": {
     "description": {
-      "value": "<p>Today, these mechanical constructs are considered the last remnants of ancient civilisation. Created thousands of years ago to serve as tools or guardians of knowledge, the abilities of one Autarch can hardly be compared with those of another. They all harbour a connection between long-forgotten technology and powerful magic. Their bodies are forged from different metals.</p><p>The Delta Kilo series differs from the other Autarchs in many ways. They are humanoid in shape and were (it is assumed) created for social purposes. They have a highly developed artificial intelligence and the ability to copy and accurately reflect different emotions.</p><h2>Physical Description</h2><p>Height ranges between 80 cm and 160 cm. Weight is calculated at roughly 250 kg per meter of height due to reinforced internal machinery.</p><h2>Reinforced Armour</h2><p>Reinforced with rare metals, the outer layer of the Delta Kilo models grants a +3 bonus to Armor Class. No additional armour can be worn, as no known armour is compatible with the Autarch frame.</p><h2>Mechanical</h2><p>The model is resistant to poison damage and cannot become ill. It also has advantage on saving throws against being poisoned. It does not need food, water, or oxygen.</p><h2>Sleep Mode</h2><p>To gain the benefits of a long rest, the Autarch must enter rest mode for 6 hours. In this state, it is motionless but fully conscious and can see and hear as normal.</p><h2>Language Comprehension</h2><p>The Delta Kilo model learns two languages in addition to Common.</p><h2>Mechanical Body</h2><p>Ordinary healing spells have no effect on Autarchs, as they are considered constructs. However, the Mending cantrip can be used to repair them and restore their Hit Points. Whenever Mending is cast on the Autarch, it can roll a Hit Die and heal the result plus its Constitution modifier to Hit Points.</p><h2>Constructed Resilience</h2><p>You have advantage on saving throws against being poisoned, and you have resistance to poison damage. You don't need to eat, drink, or breathe. You require periodic lubrication instead of nourishment; this dependency is tracked through the module's fluid gauge system. You are immune to disease. You don't need to sleep, and magic can't put you to sleep.</p><h2>Natural Vulnerabilities</h2><p>Due to your artificial construction, you have the following vulnerabilities:</p><ul><li><strong>Lightning.</strong> Electrical discharges can overload or disrupt your internal systems. You have vulnerability to lightning damage.</li><li><strong>Cold.</strong> Extreme cold impairs your mechanical functions and coolant circulation. You have vulnerability to cold damage.</li><li><strong>Acid.</strong> Corrosive substances can dissolve wiring, joints, and exposed surfaces. You have vulnerability to acid damage.</li></ul><p><strong>Water Susceptibility.</strong> When you are fully submerged in water or heavily soaked, you have disadvantage on Dexterity saving throws. This disadvantage persists for 24 hours after being fully submerged.</p><h2>Specialized Design</h2><p>You gain one skill proficiency and one tool proficiency of your choice.</p><h2>Vision</h2><p>Thanks to your modified camera lenses, you have darkvision with a range of 60 feet. Within this range, you can see in darkness as if it were dim light, but only in shades of grey. In addition, you have tremorsense with a range of 10 feet. While you are in contact with the ground or a solid surface, you can detect the location of any creature that is also in contact with the same surface within that range, as long as it is not flying or otherwise completely disconnected from the terrain.</p><h2>Sensoric</h2><p>You have proficiency in the Perception skill.</p><h2>Beepstream</h2><p>You are capable of understanding and communicating in Beepstream, the acoustic signal language used by Autarchs. Beepstream consists of structured tonal patterns commonly rendered as short, medium, and long pulses. Beepstream is unintelligible to most creatures and cannot be understood by spells such as Comprehend Languages or Tongues unless specifically adapted to machine-coded acoustic patterns.</p>",
+      "value": "<p>Today, these mechanical constructs are considered the last remnants of ancient civilisation. Created thousands of years ago to serve as tools or guardians of knowledge, the abilities of one Autarch can hardly be compared with those of another. They all harbour a connection between long-forgotten technology and powerful magic. Their bodies are forged from different metals.</p><p>The Delta Kilo series differs from the other Autarchs in many ways. They are humanoid in shape and were (it is assumed) created for social purposes. They have a highly developed artificial intelligence and the ability to copy and accurately reflect different emotions.</p><h3>Delta Kilo Traits</h3><p><strong>Creature Type:</strong> Construct</p><p><strong>Size:</strong> Medium (80-160cm)</p><p><strong>Speed:</strong> 30 ft. walking, 10 ft. climbing, 10 ft. swimming (unable to truly swim; walks along the bottom of bodies of water)</p><p>As a Delta Kilo Autarch, you have these special traits.</p>",
       "chat": ""
     },
+    "source": {
+      "custom": "AgentGG Homebrew",
+      "book": "",
+      "page": "",
+      "license": "",
+      "rules": "2024",
+      "revision": 1
+    },
     "identifier": "delta-kilo-modell-a",
+    "advancement": {
+      "sizeAdv0001234567": {
+        "_id": "sizeAdv0001234567",
+        "type": "Size",
+        "configuration": {
+          "sizes": ["med"]
+        },
+        "value": {
+          "size": "med"
+        },
+        "level": 0,
+        "title": "",
+        "hint": "Height ranges between 80 cm and 160 cm.",
+        "flags": {}
+      },
+      "grantAdv000123456": {
+        "_id": "grantAdv000123456",
+        "type": "ItemGrant",
+        "configuration": {
+          "items": [
+            { "uuid": "Compendium.delta-kilo-fluid-gauge.delta-kilo-items.Item.oEOIRos9mTWAtpZG", "optional": false },
+            { "uuid": "Compendium.delta-kilo-fluid-gauge.delta-kilo-items.Item.NNUgDwHoRmaIZvGJ", "optional": false },
+            { "uuid": "Compendium.delta-kilo-fluid-gauge.delta-kilo-items.Item.60nBaWhDWc0qfbyP", "optional": false },
+            { "uuid": "Compendium.delta-kilo-fluid-gauge.delta-kilo-items.Item.57v6WJwUrZGQizio", "optional": false },
+            { "uuid": "Compendium.delta-kilo-fluid-gauge.delta-kilo-items.Item.jJzL4dApcpIDeY8a", "optional": false },
+            { "uuid": "Compendium.delta-kilo-fluid-gauge.delta-kilo-items.Item.OfakMVtsAfIY4x4W", "optional": false },
+            { "uuid": "Compendium.delta-kilo-fluid-gauge.delta-kilo-items.Item.hQjApGAUklr0XuXo", "optional": false },
+            { "uuid": "Compendium.delta-kilo-fluid-gauge.delta-kilo-items.Item.DmCPruZnfxzN7JLj", "optional": false }
+          ],
+          "optional": false,
+          "spell": null
+        },
+        "value": {},
+        "level": 0,
+        "title": "Delta Kilo Traits",
+        "hint": "",
+        "flags": {}
+      }
+    },
     "movement": {
-      "walk": 30,
-      "climb": 10,
-      "swim": 10,
+      "walk": "30",
+      "climb": "10",
+      "swim": "10",
       "units": "ft",
-      "hover": false
+      "hover": false,
+      "ignoredDifficultTerrain": []
     },
     "senses": {
-      "darkvision": 60,
       "units": "ft",
-      "special": "Tremorsense 10 ft. (surface contact only)"
+      "special": "Tremorsense 10 ft. (surface contact only)",
+      "ranges": {
+        "darkvision": 60,
+        "blindsight": null,
+        "tremorsense": 10,
+        "truesight": null
+      }
     },
     "type": {
       "value": "construct",
-      "subtype": ""
-    },
-    "size": "med",
-    "source": {
-      "custom": "AgentGG Homebrew"
+      "subtype": "",
+      "custom": ""
     }
   },
-  "effects": [
-    {
-      "_id": "evRrMBKoPb3w1KOj",
-      "name": "Natural Armor",
-      "img": "assets/img/autarchenrace.png",
-      "changes": [
-        {
-          "key": "system.attributes.ac.bonus",
-          "mode": 2,
-          "value": "3",
-          "priority": 20
-        }
-      ],
-      "disabled": false,
-      "transfer": true,
-      "duration": {},
-      "flags": {},
-      "_key": "!items.effects!dkgracemodella001.dkgeffectnatarmr1"
-    },
-    {
-      "_id": "iJM1aJ3S8AfiypaP",
-      "name": "Natural Vulnerabilities",
-      "img": "assets/img/autarchenrace.png",
-      "changes": [
-        {
-          "key": "system.traits.dv.value",
-          "mode": 2,
-          "value": "lightning",
-          "priority": 20
-        },
-        {
-          "key": "system.traits.dv.value",
-          "mode": 2,
-          "value": "cold",
-          "priority": 20
-        },
-        {
-          "key": "system.traits.dv.value",
-          "mode": 2,
-          "value": "acid",
-          "priority": 20
-        },
-        {
-          "key": "system.traits.dr.value",
-          "mode": 2,
-          "value": "poison",
-          "priority": 20
-        },
-        {
-          "key": "system.traits.ci.value",
-          "mode": 2,
-          "value": "disease",
-          "priority": 20
-        }
-      ],
-      "disabled": false,
-      "transfer": true,
-      "duration": {},
-      "flags": {},
-      "_key": "!items.effects!dkgracemodella001.dkgeffectvulns001"
-    },
-    {
-      "_id": "5kwXCxJWBOpQ0t8j",
-      "name": "Sensoric (Perception Proficiency)",
-      "img": "assets/img/autarchenrace.png",
-      "changes": [
-        {
-          "key": "system.skills.prc.value",
-          "mode": 5,
-          "value": "1",
-          "priority": 20
-        }
-      ],
-      "disabled": false,
-      "transfer": true,
-      "duration": {},
-      "flags": {},
-      "_key": "!items.effects!dkgracemodella001.dkgeffectskills001"
-    }
-  ],
+  "effects": [],
   "flags": {
     "dkg": {
       "race": true,
-      "gaugeValue": 48,
-      "lastUpdate": 0,
-      "hudVisible": true
+      "gaugeValue": 0,
+      "lastUpdate": 0
     }
   },
-  "_key": "!items!4hZNxjVJ2qLusZK4"
+  "_key": "!items!2J68bnN1KBQT7jYM"
 }

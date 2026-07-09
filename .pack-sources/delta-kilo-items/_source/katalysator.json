@@ -1,8 +1,8 @@
 {
-  "_id": "JF0DyB6IkeU9coRY",
+  "_id": "hScjxpUcEQYu9E7d",
   "name": "Autarchen-Katalysator",
   "type": "consumable",
-  "img": "assets/img/katlysator.png",
+  "img": "modules/delta-kilo-fluid-gauge/assets/img/katlysator.png",
   "folder": "qt5kpil3sawqpPOB",
   "system": {
     "description": {
@@ -10,19 +10,10 @@
       "chat": ""
     },
     "identifier": "autarchen-katalysator",
-    "type": {
-      "value": "trinket",
-      "subtype": ""
-    },
+    "type": { "value": "trinket", "subtype": "" },
     "rarity": "artifact",
-    "price": {
-      "value": 5000,
-      "denomination": "gp"
-    },
-    "weight": {
-      "value": 1,
-      "units": "lb"
-    },
+    "price": { "value": 5000, "denomination": "gp" },
+    "weight": { "value": 1, "units": "lb" },
     "quantity": 1,
     "uses": {
       "max": "5",
@@ -32,5 +23,5 @@
   },
   "effects": [],
   "flags": {},
-  "_key": "!items!JF0DyB6IkeU9coRY"
+  "_key": "!items!hScjxpUcEQYu9E7d"
 }

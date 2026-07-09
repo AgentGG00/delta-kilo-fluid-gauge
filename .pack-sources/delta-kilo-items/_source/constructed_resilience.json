@@ -1,0 +1,88 @@
+{
+  "_id": "NNUgDwHoRmaIZvGJ",
+  "name": "Constructed Resilience",
+  "type": "feat",
+  "img": "modules/delta-kilo-fluid-gauge/assets/img/autarchenrace.png",
+  "folder": "kB0KxrqWGas1ukkJ",
+  "system": {
+    "description": {
+      "value": "<p>You have advantage on saving throws against being poisoned, and you have resistance to poison damage. You don't need to eat, drink, or breathe. You require periodic lubrication instead of nourishment; this dependency is tracked through the module's fluid gauge system. You are immune to disease. You don't need to sleep, and magic can't put you to sleep.</p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "AgentGG Homebrew",
+      "book": "",
+      "page": "",
+      "license": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "race",
+      "subtype": ""
+    },
+    "requirements": "Delta Kilo Modell (A)",
+    "properties": [],
+    "activities": {},
+    "enchant": {},
+    "prerequisites": {
+      "level": null,
+      "items": [],
+      "repeatable": false
+    },
+    "identifier": "constructed-resilience",
+    "advancement": {},
+    "crewed": false
+  },
+  "effects": [
+    {
+      "name": "Constructed Resilience",
+      "img": "modules/delta-kilo-fluid-gauge/assets/img/autarchenrace.png",
+      "_id": "Rg9ttXAuhKJMGmLr",
+      "type": "base",
+      "system": {
+        "changes": [
+          {
+            "key": "system.traits.dr.value",
+            "value": "poison",
+            "priority": 20,
+            "type": "add",
+            "phase": "initial"
+          },
+          {
+            "key": "system.traits.ci.value",
+            "value": "disease",
+            "priority": 20,
+            "type": "add",
+            "phase": "initial"
+          }
+        ]
+      },
+      "disabled": false,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
+      "_key": "!items.effects!NNUgDwHoRmaIZvGJ.Rg9ttXAuhKJMGmLr"
+    }
+  ],
+  "flags": {},
+  "_key": "!items!NNUgDwHoRmaIZvGJ"
+}

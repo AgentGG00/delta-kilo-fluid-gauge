@@ -1,0 +1,45 @@
+{
+  "_id": "57v6WJwUrZGQizio",
+  "name": "Specialized Design",
+  "type": "feat",
+  "img": "modules/delta-kilo-fluid-gauge/assets/img/autarchenrace.png",
+  "system": {
+    "description": {
+      "value": "<p>You gain one skill proficiency and one tool proficiency of your choice.</p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "AgentGG Homebrew",
+      "book": "",
+      "page": "",
+      "license": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "race",
+      "subtype": ""
+    },
+    "requirements": "Delta Kilo Modell (A)",
+    "properties": [],
+    "activities": {},
+    "enchant": {},
+    "prerequisites": {
+      "level": null,
+      "items": [],
+      "repeatable": false
+    },
+    "identifier": "specialized-design",
+    "advancement": {},
+    "crewed": false
+  },
+  "effects": [],
+  "folder": "kB0KxrqWGas1ukkJ",
+  "flags": {},
+  "_key": "!items!57v6WJwUrZGQizio"
+}

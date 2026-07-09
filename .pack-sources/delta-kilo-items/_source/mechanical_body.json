@@ -1,0 +1,45 @@
+{
+  "_id": "DmCPruZnfxzN7JLj",
+  "name": "Mechanical Body",
+  "type": "feat",
+  "img": "modules/delta-kilo-fluid-gauge/assets/img/autarchenrace.png",
+  "system": {
+    "description": {
+      "value": "<p>Ordinary healing spells have no effect on Autarchs, as they are considered constructs. However, the Mending cantrip can be used to repair them and restore their Hit Points. Whenever Mending is cast on the Autarch, it can roll a Hit Die and heal the result plus its Constitution modifier to Hit Points.</p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "AgentGG Homebrew",
+      "book": "",
+      "page": "",
+      "license": "",
+      "rules": "2024",
+      "revision": 1
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "race",
+      "subtype": ""
+    },
+    "requirements": "Delta Kilo Modell (A)",
+    "properties": [],
+    "activities": {},
+    "enchant": {},
+    "prerequisites": {
+      "level": null,
+      "items": [],
+      "repeatable": false
+    },
+    "identifier": "mechanical-body",
+    "advancement": {},
+    "crewed": false
+  },
+  "effects": [],
+  "folder": "kB0KxrqWGas1ukkJ",
+  "flags": {},
+  "_key": "!items!DmCPruZnfxzN7JLj"
+}
