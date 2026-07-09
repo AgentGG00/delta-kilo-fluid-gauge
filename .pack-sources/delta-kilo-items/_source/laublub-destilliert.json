@@ -6,7 +6,7 @@
   "folder": "dkgfolderlaublub1",
   "system": {
     "description": {
-      "value": "<p>A vial of fully distilled Laublub oil, almost clear with a faint luminous shimmer. The purest and most potent grade, produced through an elaborate distillation process involving a catalyst and heat.</p><h2>Drink</h2><p>Restricted to Autarchs of the Delta Kilo line. Restores hours to the drinker's fluid gauge, scaled by the amount consumed (Consumption Scaling).</p><h2>Douse</h2><p>Pour one charge onto the ground to coat a 5x5 ft. area with oil (each additional charge used adds one more adjacent 5x5 ft. area). While un-ignited, the area is difficult terrain and any creature entering it or starting its turn there must succeed on a DC 10 + the douser's Dexterity modifier Dexterity saving throw or fall prone; standing up requires the same save. The oil evaporates after 2 minutes. If ignited, the oil burns for 5 minutes, dealing 1d12 fire damage to any creature in the area at the start of its turn; while burning, the area is no longer difficult terrain and no save is required to move through it.</p><h2>Throw</h2><p>Make a ranged attack roll (1d20 + Dexterity or Strength modifier, whichever is higher) against a creature or object within range. On a hit, the target is coated in oil for 60 rounds (based on the bottle's remaining charges). At the start of its turn, the target may use its action to wipe off the oil with a DC 10 Dexterity saving throw; on a success, the remaining duration is reduced by 5 rounds. If the oil is ignited, it grants a one-time +8 bonus to the triggering fire damage; the oil then continues burning for 2 rounds until the end of the target's next turn, dealing an additional 2d8 fire damage at the start of that turn.</p>",
+      "value": "<p>A vial of fully distilled Laublub oil, almost clear with a faint luminous shimmer. The purest and most potent grade, produced through distillation involving a catalyst and heat.</p><h2>Drink</h2><p>Target a creature and choose how many charges to feed it (Consumption Scaling). Each charge consumed restores 1 hour to the target's fluid gauge, up to the 48-hour cap. Only meaningful if the target is a Delta Kilo Autarch; excess beyond the cap is wasted.</p><h2>Douse</h2><p>Pour charges onto the ground to coat the area with oil (radius scales with charges spent: 1 charge = 2.5 ft radius, 2 = 3.75 ft, 3 = 5 ft). Any creature entering or starting its turn there must succeed on a DC 10 + the douser's Dexterity modifier Dexterity saving throw or fall prone (and take 1d12 fire damage if the oil has been ignited; standing up requires the same save). The oil evaporates after 2 minutes. Igniting is GM adjudicated and grants a one-time +8 bonus to the triggering fire damage.</p><h2>Throw</h2><p>Ranged attack roll against a creature or object. On a hit, the target is coated in oil for 60 rounds. At the start of its turn, the target may spend its action and succeed on a DC 10 Dexterity saving throw to reduce the remaining duration by 5 rounds. Igniting (GM adjudicated) grants a one-time +8 bonus to the triggering fire damage; the oil then continues burning for 2 rounds until the end of the target's next turn, dealing an additional 2d8 fire damage at the start of that turn (use the Throw - Continued Burn Damage activity).</p>",
       "chat": ""
     },
     "identifier": "laublub-destilliert",
@@ -36,11 +36,169 @@
       ]
     }
   },
+  "activities": {
+    "dkgactdrinkdes00001": {
+      "type": "utility",
+      "_id": "dkgactdrinkdes00001",
+      "name": "Drink",
+      "img": "assets/img/destiliert.png",
+      "activation": {
+        "type": "action",
+        "value": 1
+      },
+      "consumption": {
+        "targets": [
+          {
+            "type": "itemUses",
+            "value": "1"
+          }
+        ],
+        "scaling": {
+          "allowed": true,
+          "max": "60"
+        }
+      },
+      "target": {
+        "affects": {
+          "count": "1",
+          "type": "creature"
+        }
+      },
+      "roll": {
+        "prompt": false
+      },
+      "description": {
+        "chatFlavor": "Each charge fed to the target restores 1 hour to their fluid gauge (handled via module socket; GM client applies the update)."
+      }
+    },
+    "dkgactdousedes000001": {
+      "type": "save",
+      "_id": "dkgactdousedes000001",
+      "name": "Douse",
+      "img": "assets/img/destiliert.png",
+      "activation": {
+        "type": "action",
+        "value": 1
+      },
+      "consumption": {
+        "targets": [
+          {
+            "type": "itemUses",
+            "value": "1"
+          }
+        ],
+        "scaling": {
+          "allowed": true,
+          "max": "3"
+        }
+      },
+      "target": {
+        "template": {
+          "type": "circle",
+          "size": "2.5",
+          "units": "ft"
+        },
+        "affects": {
+          "type": "creature"
+        }
+      },
+      "save": {
+        "ability": ["dex"],
+        "dc": {
+          "calculation": "",
+          "formula": "10 + @abilities.dex.mod"
+        }
+      },
+      "damage": {
+        "onSave": "full",
+        "parts": [
+          {
+            "number": 1,
+            "denomination": 12,
+            "types": ["fire"],
+            "custom": {
+              "enabled": false
+            }
+          }
+        ]
+      },
+      "roll": {
+        "prompt": false
+      },
+      "description": {
+        "chatFlavor": "Failure: fall prone. Fire damage applies to anyone in the area once ignited (GM adjudicated), regardless of save result. Standing up requires the same save. Oil evaporates after 2 minutes."
+      }
+    },
+    "dkgactthrowdes000001": {
+      "type": "attack",
+      "_id": "dkgactthrowdes000001",
+      "name": "Throw",
+      "img": "assets/img/destiliert.png",
+      "activation": {
+        "type": "action",
+        "value": 1
+      },
+      "consumption": {
+        "targets": [
+          {
+            "type": "itemUses",
+            "value": "1"
+          }
+        ]
+      },
+      "attack": {
+        "ability": "dex",
+        "bonus": "max(@abilities.dex.mod, @abilities.str.mod) - @abilities.dex.mod",
+        "type": {
+          "value": "ranged",
+          "classification": "weapon"
+        }
+      },
+      "range": {
+        "value": 20,
+        "units": "ft"
+      },
+      "target": {
+        "affects": {
+          "count": "1",
+          "type": "creature"
+        }
+      },
+      "description": {
+        "chatFlavor": "On a hit, the target is coated in oil for 60 rounds (Destilliert). Wipe off with DC 10 Dexterity save as an action (reduces remaining duration by 5 rounds). Igniting (GM adjudicated) grants a one-time +8 bonus to triggering fire damage, then continues burning for 2 rounds until the end of the target's next turn (use Throw - Continued Burn Damage for the follow-up 2d8)."
+      }
+    },
+    "dkgactburndes0000001": {
+      "type": "damage",
+      "_id": "dkgactburndes0000001",
+      "name": "Throw - Continued Burn Damage",
+      "img": "assets/img/destiliert.png",
+      "activation": {
+        "type": "special"
+      },
+      "damage": {
+        "parts": [
+          {
+            "number": 2,
+            "denomination": 8,
+            "types": ["fire"]
+          }
+        ]
+      },
+      "description": {
+        "chatFlavor": "One-time follow-up damage at the start of the target's next turn after ignition (Destilliert only)."
+      }
+    }
+  },
   "effects": [],
   "flags": {
     "dkg": {
       "purityTier": "destilliert",
-      "hoursValue": 60
+      "hoursValue": 60,
+      "throwDurationRounds": 60,
+      "igniteBonus": 8,
+      "continuedBurnDamage": "2d8",
+      "douseEvaporateSeconds": 120
     }
   },
   "_key": "!items!dkgitemlaublubdes1"

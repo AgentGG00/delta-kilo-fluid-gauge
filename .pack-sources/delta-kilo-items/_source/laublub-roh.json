@@ -6,7 +6,7 @@
   "folder": "dkgfolderlaublub1",
   "system": {
     "description": {
-      "value": "<p>A vial of thick, murky, unrefined Laublub oil in its rawest form. Delta Kilo Autarchs consume this as lubricant to sustain their internal systems. Only the Simple gefiltert and Gefiltert purity tiers are safe for an Autarch to drink; Roh is too impure.</p><h2>Douse</h2><p>Pour one charge onto the ground to coat a 5x5 ft. area with oil (each additional charge used adds one more adjacent 5x5 ft. area). While un-ignited, the area is difficult terrain and any creature entering it or starting its turn there must succeed on a DC 10 + the douser's Dexterity modifier Dexterity saving throw or fall prone; standing up requires the same save. The oil evaporates after 1 round. If ignited, the oil burns for 1 round, dealing 1d4 fire damage to any creature in the area at the start of its turn; while burning, the area is no longer difficult terrain and no save is required to move through it.</p><h2>Throw</h2><p>Make a ranged attack roll (1d20 + Dexterity or Strength modifier, whichever is higher) against a creature or object within range. On a hit, the target is coated in oil for 4 rounds (based on the bottle's remaining charges). At the start of its turn, the target may use its action to wipe off the oil with a DC 10 Dexterity saving throw; on a success, the remaining duration is reduced by 5 rounds. If the oil is ignited, it grants a one-time +1 bonus to the triggering fire damage and burns out immediately (1 round).</p>",
+      "value": "<p>A vial of thick, murky, unrefined Laublub oil in its rawest form. Too impure for a Delta Kilo Autarch to safely consume.</p><h2>Douse</h2><p>Pour charges onto the ground to coat the area with oil (radius scales with charges spent: 1 charge = 2.5 ft radius, 2 = 3.75 ft, 3 = 5 ft). Any creature entering or starting its turn there must succeed on a DC 10 + the douser's Dexterity modifier Dexterity saving throw or fall prone (and take 1d4 fire damage if the oil has been ignited; standing up requires the same save). The oil evaporates after 1 round. Igniting is GM adjudicated and grants a one-time +1 bonus to the triggering fire damage.</p><h2>Throw</h2><p>Ranged attack roll against a creature or object. On a hit, the target is coated in oil for 4 rounds. At the start of its turn, the target may spend its action and succeed on a DC 10 Dexterity saving throw to reduce the remaining duration by 5 rounds. Igniting (GM adjudicated) grants a one-time +1 bonus to the triggering fire damage.</p>",
       "chat": ""
     },
     "identifier": "laublub-roh",
@@ -36,11 +36,113 @@
       ]
     }
   },
+  "activities": {
+    "dkgactdouseroh0001": {
+      "type": "save",
+      "_id": "dkgactdouseroh0001",
+      "name": "Douse",
+      "img": "assets/img/roh.png",
+      "activation": {
+        "type": "action",
+        "value": 1
+      },
+      "consumption": {
+        "targets": [
+          {
+            "type": "itemUses",
+            "value": "1"
+          }
+        ],
+        "scaling": {
+          "allowed": true,
+          "max": "3"
+        }
+      },
+      "target": {
+        "template": {
+          "type": "circle",
+          "size": "2.5",
+          "units": "ft"
+        },
+        "affects": {
+          "type": "creature"
+        }
+      },
+      "save": {
+        "ability": ["dex"],
+        "dc": {
+          "calculation": "",
+          "formula": "10 + @abilities.dex.mod"
+        }
+      },
+      "damage": {
+        "onSave": "full",
+        "parts": [
+          {
+            "number": 1,
+            "denomination": 4,
+            "types": ["fire"],
+            "custom": {
+              "enabled": false
+            }
+          }
+        ]
+      },
+      "roll": {
+        "prompt": false
+      },
+      "description": {
+        "chatFlavor": "Failure: fall prone. Fire damage applies to anyone in the area once ignited (GM adjudicated), regardless of save result. Standing up requires the same save. Oil evaporates after 1 round."
+      }
+    },
+    "dkgactthrowroh0001": {
+      "type": "attack",
+      "_id": "dkgactthrowroh0001",
+      "name": "Throw",
+      "img": "assets/img/roh.png",
+      "activation": {
+        "type": "action",
+        "value": 1
+      },
+      "consumption": {
+        "targets": [
+          {
+            "type": "itemUses",
+            "value": "1"
+          }
+        ]
+      },
+      "attack": {
+        "ability": "dex",
+        "bonus": "max(@abilities.dex.mod, @abilities.str.mod) - @abilities.dex.mod",
+        "type": {
+          "value": "ranged",
+          "classification": "weapon"
+        }
+      },
+      "range": {
+        "value": 20,
+        "units": "ft"
+      },
+      "target": {
+        "affects": {
+          "count": "1",
+          "type": "creature"
+        }
+      },
+      "description": {
+        "chatFlavor": "On a hit, the target is coated in oil for 4 rounds (Roh). Wipe off with DC 10 Dexterity save as an action (reduces remaining duration by 5 rounds). Igniting (GM adjudicated) grants a one-time +1 bonus to triggering fire damage."
+      }
+    }
+  },
   "effects": [],
   "flags": {
     "dkg": {
       "purityTier": "roh",
-      "hoursValue": 4
+      "hoursValue": 4,
+      "throwDurationRounds": 4,
+      "igniteBonus": 1,
+      "douseEvaporateRounds": 1
     }
   },
   "_key": "!items!dkgitemlaublubroh1"
