@@ -47,7 +47,8 @@
       "disabled": false,
       "transfer": true,
       "duration": {},
-      "flags": {}
+      "flags": {},
+      "_key": "!items.effects!dkgracemodella001.dkgeffectnatarmr1"
     },
     {
       "_id": "dkgeffectvulns001",
@@ -88,7 +89,8 @@
       "disabled": false,
       "transfer": true,
       "duration": {},
-      "flags": {}
+      "flags": {},
+      "_key": "!items.effects!dkgracemodella001.dkgeffectvulns001"
     },
     {
       "_id": "dkgeffectskills001",
@@ -105,7 +107,8 @@
       "disabled": false,
       "transfer": true,
       "duration": {},
-      "flags": {}
+      "flags": {},
+      "_key": "!items.effects!dkgracemodella001.dkgeffectskills001"
     }
   ],
   "flags": {
