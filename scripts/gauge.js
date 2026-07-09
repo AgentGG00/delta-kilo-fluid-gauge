@@ -54,8 +54,11 @@ class DKGGaugeHud extends HandlebarsApplicationMixin(ApplicationV2) {
   static DEFAULT_OPTIONS = {
     id: "dkg-gauge-hud",
     window: {
-      frame: false,
-      positioned: true
+      frame: true,
+      positioned: true,
+      title: "Delta Kilo Gauge",
+      minimizable: true,
+      resizable: false
     },
     position: {
       left: 20,

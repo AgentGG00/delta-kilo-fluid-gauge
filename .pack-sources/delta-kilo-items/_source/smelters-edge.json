@@ -44,12 +44,10 @@
     },
     "damage": {
       "base": {
-        "number": 2,
-        "denomination": 8,
+        "number": null,
+        "denomination": null,
         "bonus": "",
-        "types": [
-          "fire"
-        ],
+        "types": [],
         "custom": {
           "enabled": false
         }
