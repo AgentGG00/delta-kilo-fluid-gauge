@@ -2,7 +2,7 @@
   "id": "delta-kilo-fluid-gauge",
   "title": "Delta Kilo – Fluid Gauge",
   "description": "Delta Kilo Autarch fluid gauge HUD with time-based consumption and crafting integration.",
-  "version": "0.5.7",
+  "version": "0.6.7",
   "authors": [
     {
       "name": "AgentGG"
