@@ -320,3 +320,58 @@ globalThis.DKG_LAUBLUB = {
 };
 
 console.log("[DKG:laublub] laublub.js loaded");
+
+/* -------------------------------------------- */
+/*  Douse-Template-Verknüpfung                   */
+/* -------------------------------------------- */
+
+Hooks.on("createMeasuredTemplate", async (templateDocument, options, userId) => {
+  const item = templateDocument.getFlag("dnd5e", "item");
+  if (!item) return;
+
+  const sourceItem = fromUuidSync?.(item) ?? null;
+  const durationSeconds = sourceItem?.flags?.dkg?.douseEvaporateSeconds;
+  if (durationSeconds === undefined) return;
+
+  console.log("[DKG:laublub] createMeasuredTemplate: douse template detected", {
+    templateId: templateDocument.id,
+    durationSeconds
+  });
+
+  await templateDocument.setFlag("dkg", "isDouseTemplate", true);
+  await templateDocument.setFlag("dkg", "placedAt", game.time.worldTime);
+  await templateDocument.setFlag("dkg", "durationSeconds", durationSeconds);
+});
+
+/* -------------------------------------------- */
+/*  Throw-Öl-Effekt: Dauer nach Reinheitsstufe setzen */
+/* -------------------------------------------- */
+
+Hooks.on("dnd5e.postUseActivity", async (activity, usageConfig, results) => {
+  if (activity?.name !== "Throw") return;
+
+  const throwDurationRounds = activity.item?.getFlag("dkg", "throwDurationRounds");
+  if (throwDurationRounds === undefined) return;
+
+  const targetActor = Array.from(game.user.targets)[0]?.actor;
+  if (!targetActor) {
+    console.warn("[DKG:laublub] postUseActivity (throw): kein Ziel gefunden, Effekt-Dauer nicht gesetzt");
+    return;
+  }
+
+  const oilEffect = targetActor.effects.find((e) => e.getFlag("dkg", "isOilEffect") === true);
+  if (!oilEffect) {
+    console.warn("[DKG:laublub] postUseActivity (throw): kein oil_effect auf Ziel angewendet, bitte manuell prüfen (Treffer?)");
+    return;
+  }
+
+  console.log("[DKG:laublub] postUseActivity (throw): setze Effekt-Dauer nach Reinheitsstufe", {
+    targetActor: targetActor.name,
+    throwDurationRounds
+  });
+
+  await oilEffect.update({
+    duration: { seconds: throwDurationRounds * 6 },
+    "flags.dkg.remainingRounds": throwDurationRounds
+  });
+});

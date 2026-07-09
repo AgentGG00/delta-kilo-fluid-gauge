@@ -1,0 +1,11 @@
+{
+  "_id": "dkgmacrogaugesett1",
+  "name": "Delta Kilo - Gauge Wert setzen (GM)",
+  "type": "script",
+  "img": "assets/img/smelters_edge.png",
+  "scope": "global",
+  "command": "// Prozentwert hier direkt eintragen (0-100), dann Macro ausführen.\nconst targetPercent = 75;\n\nif (!globalThis.DKG_GAUGE) {\n  ui.notifications.error(\"Delta Kilo Fluid Gauge Modul nicht geladen.\");\n} else {\n  globalThis.DKG_GAUGE.setGaugeByPercent(targetPercent);\n}",
+  "folder": null,
+  "flags": {},
+  "_key": "!macros!dkgmacrogaugesett1"
+}

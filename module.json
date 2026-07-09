@@ -49,5 +49,19 @@
   "styles": [
     "styles/module.css"
   ],
-  "packs": []
+  "packs": [
+    {
+      "name": "delta-kilo-items",
+      "label": "Delta Kilo Items",
+      "path": "packs/delta-kilo-items",
+      "type": "Item",
+      "system": "dnd5e"
+    },
+    {
+      "name": "delta-kilo-macros",
+      "label": "Delta Kilo Macros",
+      "path": "packs/delta-kilo-macros",
+      "type": "Macro"
+    }
+  ]
 }

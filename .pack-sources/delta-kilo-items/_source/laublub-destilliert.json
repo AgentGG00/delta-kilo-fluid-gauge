@@ -14,7 +14,9 @@
       "value": "trinket",
       "subtype": ""
     },
-    "properties": ["gear"],
+    "properties": [
+      "gear"
+    ],
     "rarity": "",
     "price": {
       "value": 100,
@@ -103,7 +105,9 @@
         }
       },
       "save": {
-        "ability": ["dex"],
+        "ability": [
+          "dex"
+        ],
         "dc": {
           "calculation": "",
           "formula": "10 + @abilities.dex.mod"
@@ -115,7 +119,9 @@
           {
             "number": 1,
             "denomination": 12,
-            "types": ["fire"],
+            "types": [
+              "fire"
+            ],
             "custom": {
               "enabled": false
             }
@@ -166,7 +172,13 @@
       },
       "description": {
         "chatFlavor": "On a hit, the target is coated in oil for 60 rounds (Destilliert). Wipe off with DC 10 Dexterity save as an action (reduces remaining duration by 5 rounds). Igniting (GM adjudicated) grants a one-time +8 bonus to triggering fire damage, then continues burning for 2 rounds until the end of the target's next turn (use Throw - Continued Burn Damage for the follow-up 2d8)."
-      }
+      },
+      "effects": [
+        {
+          "_id": "dkgitemoileffect01",
+          "uuid": "Compendium.delta-kilo-fluid-gauge.delta-kilo-items.Item.dkgitemoileffect01"
+        }
+      ]
     },
     "dkgactburndes0000001": {
       "type": "damage",
@@ -181,7 +193,9 @@
           {
             "number": 2,
             "denomination": 8,
-            "types": ["fire"]
+            "types": [
+              "fire"
+            ]
           }
         ]
       },

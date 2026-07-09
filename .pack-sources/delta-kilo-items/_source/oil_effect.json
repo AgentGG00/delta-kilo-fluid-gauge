@@ -1,0 +1,37 @@
+{
+  "_id": "dkgitemoileffect01",
+  "name": "Mit Öl bedeckt",
+  "type": "feat",
+  "img": "assets/img/roh.png",
+  "folder": "dkgfoldereffects01",
+  "system": {
+    "description": {
+      "value": "<p>Das Ziel ist mit Laublub-Öl bedeckt. Dauer skaliert mit der Reinheitsstufe des geworfenen Öls (in Sekunden, via worldTime getrackt).</p>",
+      "chat": ""
+    },
+    "type": { "value": "", "subtype": "" },
+    "activities": {}
+  },
+  "effects": [
+    {
+      "_id": "dkgeffectoilstat01",
+      "name": "Mit Öl bedeckt",
+      "img": "assets/img/roh.png",
+      "changes": [],
+      "disabled": false,
+      "transfer": false,
+      "duration": {
+        "seconds": 24
+      },
+      "flags": {
+        "dkg": {
+          "isOilEffect": true,
+          "remainingRounds": 4
+        }
+      },
+      "_key": "!items.effects!dkgitemoileffect01.dkgeffectoilstat01"
+    }
+  ],
+  "flags": {},
+  "_key": "!items!dkgitemoileffect01"
+}
