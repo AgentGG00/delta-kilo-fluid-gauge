@@ -1,0 +1,134 @@
+/* Delta Kilo Fluid Gauge - HUD Styling */
+/* 3-Ebenen-Modell: back_template.png (unten) -> Flüssigkeits-Div (Mitte) -> front_template.png (oben) */
+/* Positionswerte (top/left/width/height) sind Platzhalter und werden live in Foundry
+   gegen das finale PNG-Template nachjustiert. */
+
+#dkg-gauge-hud {
+  pointer-events: none;
+}
+
+.dkg-gauge-container {
+  position: relative;
+  width: 220px;
+  height: 480px;
+  pointer-events: auto;
+}
+
+/* -------------------------------------------- */
+/* Ebene 1: back_template.png (leere Röhre, dunkle Lampen) */
+/* -------------------------------------------- */
+
+.dkg-gauge-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.dkg-gauge-back > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* -------------------------------------------- */
+/* Ebene 2: Flüssigkeits-Div (dynamische Höhe via inline style) */
+/* -------------------------------------------- */
+
+.dkg-gauge-fill {
+  position: absolute;
+  bottom: 25%;           /* Platzhalter: Position der unteren Röhren-Fassung */
+  left: 45%;              /* Platzhalter: horizontale Mitte der Röhre */
+  width: 10%;              /* Platzhalter: Röhrenbreite */
+  max-height: 50%;         /* Platzhalter: sichtbare Röhrenhöhe zwischen den Fassungen */
+  background: linear-gradient(to bottom, #f0a830, #c97a15);
+  border-radius: 2px;
+  transition: height 0.6s ease-in-out;
+  z-index: 1;
+}
+
+/* -------------------------------------------- */
+/* Lampen (Glow-Overlay über den dunklen Lampen-Kreisen im back_template) */
+/* -------------------------------------------- */
+
+.dkg-lamp {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.dkg-lamp-green {
+  top: 8%;                /* Platzhalter: Position der grünen Lampe im Template */
+  left: 30%;
+  background: radial-gradient(circle, #7fff7f 0%, #2e8b2e 70%);
+  box-shadow: 0 0 12px 4px #4caf50;
+}
+
+.dkg-lamp-red {
+  top: 8%;                /* Platzhalter: Position der roten Lampe im Template */
+  left: 60%;
+  background: radial-gradient(circle, #ff7f7f 0%, #8b2e2e 70%);
+  box-shadow: 0 0 12px 4px #e53935;
+  animation: dkg-lamp-blink 1s infinite;
+}
+
+.dkg-lamp-on {
+  opacity: 1;
+}
+
+@keyframes dkg-lamp-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* Blinken soll nur laufen, wenn die rote Lampe tatsächlich aktiv ist */
+.dkg-lamp-red:not(.dkg-lamp-on) {
+  animation: none;
+}
+
+/* -------------------------------------------- */
+/* Ebene 3: front_template.png (Rahmen mit Alpha-Aussparungen) */
+/* -------------------------------------------- */
+
+.dkg-gauge-front {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.dkg-gauge-front > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* -------------------------------------------- */
+/* Label */
+/* -------------------------------------------- */
+
+.dkg-gauge-label {
+  position: absolute;
+  bottom: -24px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  color: #d8c9a3;
+  text-shadow: 1px 1px 2px #000;
+  z-index: 4;
+}

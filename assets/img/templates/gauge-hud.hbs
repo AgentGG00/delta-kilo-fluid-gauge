@@ -1,0 +1,26 @@
+{{!-- Delta Kilo Fluid Gauge - HUD Template --}}
+{{!-- 3-Ebenen-Modell: back_template.png (unten) -> Flüssigkeits-Div (Mitte) -> front_template.png (oben) --}}
+{{!-- Positionierung/Größen der einzelnen Elemente wird live in Foundry per CSS nachjustiert. --}}
+
+{{#if hasActor}}
+<div class="dkg-gauge-container">
+
+  <div class="dkg-gauge-back">
+    <img src="assets/img/back_template.png" alt="Delta Kilo Gauge Rahmen (Rückseite)" />
+
+    <div class="dkg-gauge-fill" style="height: {{fillPercent}}%;"></div>
+
+    <div class="dkg-lamp dkg-lamp-green"></div>
+    <div class="dkg-lamp dkg-lamp-red"></div>
+  </div>
+
+  <div class="dkg-gauge-front">
+    <img src="assets/img/front_template.png" alt="Delta Kilo Gauge Rahmen (Vorderseite)" />
+  </div>
+
+  <div class="dkg-gauge-label">
+    {{actorName}}: {{gaugeValue}}h ({{fillPercent}}%)
+  </div>
+
+</div>
+{{/if}}
