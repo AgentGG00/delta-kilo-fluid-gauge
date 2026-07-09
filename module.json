@@ -2,7 +2,7 @@
   "id": "delta-kilo-fluid-gauge",
   "title": "Delta Kilo – Fluid Gauge",
   "description": "Delta Kilo Autarch fluid gauge HUD with time-based consumption and crafting integration.",
-  "version": "0.2.1",
+  "version": "0.1.0",
   "authors": [
     {
       "name": "AgentGG"
@@ -37,11 +37,15 @@
     ]
   },
   "url": "https://github.com/AgentGG00/delta-kilo-fluid-gauge",
-  "manifest": "https://raw.githubusercontent.com/AgentGGG00/delta-kilo-fluid-gauge/main/module.json",
-  "download": "https://github.com/AgentGGG00/delta-kilo-fluid-gauge/releases/latest/download/module-latest.zip",
+  "manifest": "https://raw.githubusercontent.com/AgentGG00/delta-kilo-fluid-gauge/main/module.json",
+  "download": "https://github.com/AgentGG00/delta-kilo-fluid-gauge/releases/latest/download/module-latest.zip",
   "license": "LICENSE",
   "readme": "README.md",
-  "esmodules": [],
+  "esmodules": [
+    "scripts/main.js",
+    "scripts/gauge.js",
+    "scripts/laublub.js"
+  ],
   "styles": [],
   "packs": []
 }
