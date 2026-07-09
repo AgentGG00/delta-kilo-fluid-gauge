@@ -54,11 +54,8 @@ class DKGGaugeHud extends HandlebarsApplicationMixin(ApplicationV2) {
   static DEFAULT_OPTIONS = {
     id: "dkg-gauge-hud",
     window: {
-      frame: true,
-      positioned: true,
-      title: "Delta Kilo Gauge",
-      minimizable: true,
-      resizable: false
+      frame: false,
+      positioned: true
     },
     position: {
       left: 20,
@@ -123,6 +120,66 @@ class DKGGaugeHud extends HandlebarsApplicationMixin(ApplicationV2) {
       lampGreen.classList.toggle("dkg-lamp-on", !context.isAlarm);
       lampRed.classList.toggle("dkg-lamp-on", context.isAlarm);
     }
+
+    this.#setupDragHandler();
+  }
+
+  /**
+   * Eigener Drag-Handler, da das HUD ohne Foundry-Fenster-Frame (frame: false)
+   * keine native Titelleiste zum Ziehen besitzt. Das gesamte Panel selbst
+   * wird als Ziehgriff verwendet.
+   */
+  #setupDragHandler() {
+    console.log("[DKG:gauge] setupDragHandler called");
+
+    const panel = this.element.querySelector(".dkg-gauge-container");
+    if (!panel) {
+      console.warn("[DKG:gauge] setupDragHandler: .dkg-gauge-container not found");
+      return;
+    }
+
+    // Verhindert Mehrfach-Registrierung bei wiederholtem Render
+    if (panel.dataset.dkgDragBound === "true") {
+      console.log("[DKG:gauge] setupDragHandler: already bound, skipping");
+      return;
+    }
+    panel.dataset.dkgDragBound = "true";
+
+    let isDragging = false;
+    let startX = 0;
+    let startY = 0;
+    let startLeft = 0;
+    let startTop = 0;
+
+    const onPointerDown = (event) => {
+      isDragging = true;
+      startX = event.clientX;
+      startY = event.clientY;
+      const rect = this.element.getBoundingClientRect();
+      startLeft = rect.left;
+      startTop = rect.top;
+      console.log("[DKG:gauge] drag started", { startLeft, startTop });
+      event.preventDefault();
+    };
+
+    const onPointerMove = (event) => {
+      if (!isDragging) return;
+      const deltaX = event.clientX - startX;
+      const deltaY = event.clientY - startY;
+      const newLeft = startLeft + deltaX;
+      const newTop = startTop + deltaY;
+      this.setPosition({ left: newLeft, top: newTop });
+    };
+
+    const onPointerUp = () => {
+      if (!isDragging) return;
+      isDragging = false;
+      console.log("[DKG:gauge] drag ended");
+    };
+
+    panel.addEventListener("pointerdown", onPointerDown);
+    window.addEventListener("pointermove", onPointerMove);
+    window.addEventListener("pointerup", onPointerUp);
   }
 }
 
