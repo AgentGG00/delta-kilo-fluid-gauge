@@ -47,7 +47,7 @@
     "scripts/laublub.js"
   ],
   "styles": [
-    "styles/module.css"
+    "/assets/styles/module.css"
   ],
   "packs": [
     {
