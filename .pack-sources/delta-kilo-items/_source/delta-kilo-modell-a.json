@@ -23,7 +23,9 @@
         "_id": "sizeAdv0001234567",
         "type": "Size",
         "configuration": {
-          "sizes": ["med"]
+          "sizes": [
+            "med"
+          ]
         },
         "value": {
           "size": "med"
@@ -38,14 +40,38 @@
         "type": "ItemGrant",
         "configuration": {
           "items": [
-            { "uuid": "Compendium.delta-kilo-fluid-gauge.delta-kilo-items.Item.oEOIRos9mTWAtpZG", "optional": false },
-            { "uuid": "Compendium.delta-kilo-fluid-gauge.delta-kilo-items.Item.NNUgDwHoRmaIZvGJ", "optional": false },
-            { "uuid": "Compendium.delta-kilo-fluid-gauge.delta-kilo-items.Item.60nBaWhDWc0qfbyP", "optional": false },
-            { "uuid": "Compendium.delta-kilo-fluid-gauge.delta-kilo-items.Item.57v6WJwUrZGQizio", "optional": false },
-            { "uuid": "Compendium.delta-kilo-fluid-gauge.delta-kilo-items.Item.jJzL4dApcpIDeY8a", "optional": false },
-            { "uuid": "Compendium.delta-kilo-fluid-gauge.delta-kilo-items.Item.OfakMVtsAfIY4x4W", "optional": false },
-            { "uuid": "Compendium.delta-kilo-fluid-gauge.delta-kilo-items.Item.hQjApGAUklr0XuXo", "optional": false },
-            { "uuid": "Compendium.delta-kilo-fluid-gauge.delta-kilo-items.Item.DmCPruZnfxzN7JLj", "optional": false }
+            {
+              "uuid": "Compendium.delta-kilo-fluid-gauge.delta-kilo-items.Item.oEOIRos9mTWAtpZG",
+              "optional": false
+            },
+            {
+              "uuid": "Compendium.delta-kilo-fluid-gauge.delta-kilo-items.Item.NNUgDwHoRmaIZvGJ",
+              "optional": false
+            },
+            {
+              "uuid": "Compendium.delta-kilo-fluid-gauge.delta-kilo-items.Item.60nBaWhDWc0qfbyP",
+              "optional": false
+            },
+            {
+              "uuid": "Compendium.delta-kilo-fluid-gauge.delta-kilo-items.Item.57v6WJwUrZGQizio",
+              "optional": false
+            },
+            {
+              "uuid": "Compendium.delta-kilo-fluid-gauge.delta-kilo-items.Item.jJzL4dApcpIDeY8a",
+              "optional": false
+            },
+            {
+              "uuid": "Compendium.delta-kilo-fluid-gauge.delta-kilo-items.Item.OfakMVtsAfIY4x4W",
+              "optional": false
+            },
+            {
+              "uuid": "Compendium.delta-kilo-fluid-gauge.delta-kilo-items.Item.hQjApGAUklr0XuXo",
+              "optional": false
+            },
+            {
+              "uuid": "Compendium.delta-kilo-fluid-gauge.delta-kilo-items.Item.DmCPruZnfxzN7JLj",
+              "optional": false
+            }
           ],
           "optional": false,
           "spell": null
@@ -83,7 +109,7 @@
   },
   "effects": [],
   "flags": {
-    "dkg": {
+    "delta-kilo-fluid-gauge": {
       "race": true,
       "gaugeValue": 0,
       "lastUpdate": 0

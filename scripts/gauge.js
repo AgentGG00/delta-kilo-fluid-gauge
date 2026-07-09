@@ -21,11 +21,11 @@ Hooks.on("updateWorldTime", (worldTime, dt) => {
   const { GAUGE_CAP_HOURS } = globalThis.DKG_CONSTANTS ?? { GAUGE_CAP_HOURS: 48 };
   const dtHours = dt / 3600;
 
-  const autarchActors = game.actors.filter((a) => a.getFlag("dkg", "race") === true);
+  const autarchActors = game.actors.filter((a) => a.getFlag("delta-kilo-fluid-gauge", "race") === true);
   console.log("[DKG:gauge] found autarch actors for gauge update", { count: autarchActors.length });
 
   for (const actor of autarchActors) {
-    const currentValue = actor.getFlag("dkg", "gaugeValue") ?? 0;
+    const currentValue = actor.getFlag("delta-kilo-fluid-gauge", "gaugeValue") ?? 0;
     let newValue = currentValue + dtHours;
 
     newValue = Math.min(GAUGE_CAP_HOURS, Math.max(0, newValue));
@@ -38,8 +38,8 @@ Hooks.on("updateWorldTime", (worldTime, dt) => {
     });
 
     actor.update({
-      "flags.dkg.gaugeValue": newValue,
-      "flags.dkg.lastUpdate": worldTime
+      "flags.delta-kilo-fluid-gauge.gaugeValue": newValue,
+      "flags.delta-kilo-fluid-gauge.lastUpdate": worldTime
     }).catch((err) => {
       console.error("[DKG:gauge] failed to update gauge for actor", actor.id, err);
     });
@@ -72,7 +72,7 @@ class DKGGaugeHud extends HandlebarsApplicationMixin(ApplicationV2) {
   };
 
   static getOwnedAutarchActor() {
-    const actor = game.actors.find((a) => a.getFlag("dkg", "race") === true && a.isOwner);
+    const actor = game.actors.find((a) => a.getFlag("delta-kilo-fluid-gauge", "race") === true && a.isOwner);
     console.log("[DKG:gauge] getOwnedAutarchActor result", { found: !!actor, actorName: actor?.name });
     return actor;
   }
@@ -88,7 +88,7 @@ class DKGGaugeHud extends HandlebarsApplicationMixin(ApplicationV2) {
       return { hasActor: false };
     }
 
-    const gaugeValue = actor.getFlag("dkg", "gaugeValue") ?? 0;
+    const gaugeValue = actor.getFlag("delta-kilo-fluid-gauge", "gaugeValue") ?? 0;
     const fillPercent = Math.round((gaugeValue / GAUGE_CAP_HOURS) * 100);
     const isAlarm = fillPercent <= 20;
 
@@ -153,7 +153,7 @@ Hooks.once("ready", () => {
 });
 
 Hooks.on("updateActor", (actor, changes, options, userId) => {
-  if (actor.getFlag("dkg", "race") !== true) return;
+  if (actor.getFlag("delta-kilo-fluid-gauge", "race") !== true) return;
   console.log("[DKG:gauge] updateActor hook fired for autarch actor, refreshing HUD", { actorId: actor.id });
   refreshGaugeHud();
 });
@@ -205,8 +205,8 @@ async function dkgSetGaugeByPercent(targetPercent) {
   console.log("[DKG:gauge] setting gauge value directly", { actorName: actor.name, newValue });
 
   await actor.update({
-    "flags.dkg.gaugeValue": newValue,
-    "flags.dkg.lastUpdate": game.time.worldTime
+    "flags.delta-kilo-fluid-gauge.gaugeValue": newValue,
+    "flags.delta-kilo-fluid-gauge.lastUpdate": game.time.worldTime
   });
 
   ui.notifications.info(`Gauge von ${actor.name} auf ${targetPercent}% (${newValue.toFixed(1)}h) gesetzt.`);

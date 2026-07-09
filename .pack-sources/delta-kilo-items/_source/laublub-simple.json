@@ -328,7 +328,7 @@
   },
   "effects": [],
   "flags": {
-    "dkg": {
+    "delta-kilo-fluid-gauge": {
       "purityTier": "simple",
       "hoursValue": 12,
       "throwDurationRounds": 12,

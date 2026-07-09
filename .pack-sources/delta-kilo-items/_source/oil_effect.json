@@ -22,12 +22,19 @@
       "spent": 0,
       "recovery": []
     },
-    "type": { "value": "race", "subtype": "" },
+    "type": {
+      "value": "race",
+      "subtype": ""
+    },
     "requirements": "",
     "properties": [],
     "activities": {},
     "enchant": {},
-    "prerequisites": { "level": null, "items": [], "repeatable": false },
+    "prerequisites": {
+      "level": null,
+      "items": [],
+      "repeatable": false
+    },
     "identifier": "mit-oel-bedeckt",
     "advancement": {},
     "crewed": false
@@ -56,7 +63,7 @@
       "statuses": [],
       "sort": 0,
       "flags": {
-        "dkg": {
+        "delta-kilo-fluid-gauge": {
           "isOilEffect": true,
           "remainingRounds": 4
         }

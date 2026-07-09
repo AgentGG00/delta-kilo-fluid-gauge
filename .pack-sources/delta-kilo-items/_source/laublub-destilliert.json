@@ -406,7 +406,7 @@
   },
   "effects": [],
   "flags": {
-    "dkg": {
+    "delta-kilo-fluid-gauge": {
       "purityTier": "destilliert",
       "hoursValue": 60,
       "throwDurationRounds": 60,

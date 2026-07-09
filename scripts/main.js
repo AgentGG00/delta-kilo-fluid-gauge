@@ -68,9 +68,9 @@ Hooks.on("createItem", (item, options, userId) => {
   });
 
   actor.update({
-    "flags.dkg.race": true,
-    "flags.dkg.gaugeValue": 0,
-    "flags.dkg.lastUpdate": game.time.worldTime
+    "flags.delta-kilo-fluid-gauge.race": true,
+    "flags.delta-kilo-fluid-gauge.gaugeValue": 0,
+    "flags.delta-kilo-fluid-gauge.lastUpdate": game.time.worldTime
   }).then(() => {
     console.log("[DKG:main] actor flags initialized successfully", { actorId: actor.id });
   }).catch((err) => {

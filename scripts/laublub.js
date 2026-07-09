@@ -53,7 +53,7 @@ async function dkgApplyGaugeIncrease(targetActorId, hoursToAdd) {
     return;
   }
 
-  const currentValue = actor.getFlag("dkg", "gaugeValue") ?? 0;
+  const currentValue = actor.getFlag("delta-kilo-fluid-gauge", "gaugeValue") ?? 0;
   const newValue = Math.min(GAUGE_CAP_HOURS, currentValue + hoursToAdd);
 
   console.log("[DKG:laublub] applying gauge increase", {
@@ -64,7 +64,7 @@ async function dkgApplyGaugeIncrease(targetActorId, hoursToAdd) {
     wasted: currentValue + hoursToAdd - newValue
   });
 
-  await actor.update({ "flags.dkg.gaugeValue": newValue });
+  await actor.update({ "flags.delta-kilo-fluid-gauge.gaugeValue": newValue });
 
   ui.notifications.info(`${actor.name}: Gauge um ${hoursToAdd}h erhöht (jetzt ${newValue.toFixed(1)}h).`);
 }
@@ -121,7 +121,7 @@ Hooks.on("dnd5e.postUseActivity", async (activity, usageConfig, results) => {
   }
 
   const item = activity.item;
-  const hoursPerCharge = item?.getFlag("dkg", "hoursValue") ? 1 : null;
+  const hoursPerCharge = item?.getFlag("delta-kilo-fluid-gauge", "hoursValue") ? 1 : null;
 
   if (hoursPerCharge === null) {
     console.log("[DKG:laublub] postUseActivity: item has no dkg.hoursValue flag, not a laublub item, skipping");
@@ -192,7 +192,7 @@ Hooks.on("dnd5e.postUseActivity", async (activity, usageConfig, results) => {
   }
 
   const item = activity.item;
-  const throwDurationRounds = item?.getFlag("dkg", "throwDurationRounds");
+  const throwDurationRounds = item?.getFlag("delta-kilo-fluid-gauge", "throwDurationRounds");
 
   if (throwDurationRounds === undefined) {
     console.log("[DKG:laublub] postUseActivity (throw check): item has no throwDurationRounds flag, skipping");
@@ -246,7 +246,7 @@ async function dkgApplyOilEffect(targetActor, durationRounds, sourceItemName) {
 
   const durationSeconds = durationRounds * 6;
 
-  const existing = targetActor.effects.find((e) => e.getFlag("dkg", "isOilEffect") === true);
+  const existing = targetActor.effects.find((e) => e.getFlag("delta-kilo-fluid-gauge", "isOilEffect") === true);
   if (existing) {
     console.log("[DKG:laublub] dkgApplyOilEffect: existing oil effect found, deleting before re-applying", existing.id);
     await existing.delete();
@@ -292,7 +292,7 @@ Hooks.on("updateWorldTime", (worldTime, dt) => {
     return;
   }
 
-  const douseTemplates = scene.templates.filter((t) => t.getFlag("dkg", "isDouseTemplate") === true);
+  const douseTemplates = scene.templates.filter((t) => t.getFlag("delta-kilo-fluid-gauge", "isDouseTemplate") === true);
 
   if (douseTemplates.length === 0) {
     console.log("[DKG:laublub] updateWorldTime (douse check): no active douse templates, skipping");
@@ -307,8 +307,8 @@ Hooks.on("updateWorldTime", (worldTime, dt) => {
   const expiredIds = [];
 
   for (const template of douseTemplates) {
-    const placedAt = template.getFlag("dkg", "placedAt") ?? worldTime;
-    const durationSeconds = template.getFlag("dkg", "durationSeconds") ?? 0;
+    const placedAt = template.getFlag("delta-kilo-fluid-gauge", "placedAt") ?? worldTime;
+    const durationSeconds = template.getFlag("delta-kilo-fluid-gauge", "durationSeconds") ?? 0;
     const elapsed = worldTime - placedAt;
 
     console.log("[DKG:laublub] checking douse template", {
@@ -348,9 +348,9 @@ async function dkgMarkDouseTemplate(templateDocument, durationSeconds) {
     return;
   }
 
-  await templateDocument.setFlag("dkg", "isDouseTemplate", true);
-  await templateDocument.setFlag("dkg", "placedAt", game.time.worldTime);
-  await templateDocument.setFlag("dkg", "durationSeconds", durationSeconds);
+  await templateDocument.setFlag("delta-kilo-fluid-gauge", "isDouseTemplate", true);
+  await templateDocument.setFlag("delta-kilo-fluid-gauge", "placedAt", game.time.worldTime);
+  await templateDocument.setFlag("delta-kilo-fluid-gauge", "durationSeconds", durationSeconds);
 
   console.log("[DKG:laublub] douse template flags set", { templateId: templateDocument.id });
 }
@@ -381,7 +381,7 @@ Hooks.on("dnd5e.postUseActivity", (activity, usageConfig, results) => {
   }
 
   const item = activity.item;
-  const durationSeconds = item?.getFlag("dkg", "douseEvaporateSeconds");
+  const durationSeconds = item?.getFlag("delta-kilo-fluid-gauge", "douseEvaporateSeconds");
 
   if (durationSeconds === undefined) {
     console.log("[DKG:laublub] postUseActivity (douse check): item has no douseEvaporateSeconds flag, skipping");
@@ -438,7 +438,7 @@ async function dkgWipeOffOil() {
   }
 
   const actor = token.actor;
-  const oilEffect = actor.effects.find((e) => e.getFlag("dkg", "isOilEffect") === true);
+  const oilEffect = actor.effects.find((e) => e.getFlag("delta-kilo-fluid-gauge", "isOilEffect") === true);
 
   if (!oilEffect) {
     console.log("[DKG:laublub] dkgWipeOffOil: no active oil effect on actor", actor.name);
@@ -458,7 +458,7 @@ async function dkgWipeOffOil() {
   console.log("[DKG:laublub] wipe off save result", { total, success });
 
   if (success) {
-    const currentRounds = oilEffect.getFlag("dkg", "remainingRounds") ?? 0;
+    const currentRounds = oilEffect.getFlag("delta-kilo-fluid-gauge", "remainingRounds") ?? 0;
     const newRounds = Math.max(0, currentRounds - 5);
 
     console.log("[DKG:laublub] wipe off successful, reducing oil duration", { currentRounds, newRounds });
@@ -467,7 +467,7 @@ async function dkgWipeOffOil() {
       await oilEffect.delete();
       ui.notifications.info(`${actor.name} hat das Öl vollständig abgewischt.`);
     } else {
-      await oilEffect.setFlag("dkg", "remainingRounds", newRounds);
+      await oilEffect.setFlag("delta-kilo-fluid-gauge", "remainingRounds", newRounds);
       ui.notifications.info(`${actor.name} hat abgewischt: Öl-Dauer um 5 Runden reduziert (${newRounds} verbleibend).`);
     }
   } else {

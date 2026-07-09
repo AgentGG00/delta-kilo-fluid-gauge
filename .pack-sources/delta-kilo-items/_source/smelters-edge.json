@@ -18,31 +18,56 @@
       "revision": 1
     },
     "quantity": 1,
-    "weight": { "value": 3, "units": "lb" },
-    "price": { "value": 0, "denomination": "gp" },
+    "weight": {
+      "value": 3,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
     "attuned": false,
     "equipped": false,
     "identified": true,
     "rarity": "rare",
-    "type": { "value": "simpleM" },
-    "properties": ["mgc"],
+    "type": {
+      "value": "simpleM"
+    },
+    "properties": [
+      "mgc"
+    ],
     "ability": "",
-    "range": { "value": 5, "long": null, "units": "ft" },
+    "range": {
+      "value": 5,
+      "long": null,
+      "units": "ft"
+    },
     "damage": {
       "base": {
         "number": 2,
         "denomination": 8,
         "bonus": "",
-        "types": ["fire"],
-        "custom": { "enabled": false }
+        "types": [
+          "fire"
+        ],
+        "custom": {
+          "enabled": false
+        }
       }
     },
     "uses": {
       "max": "@details.level + 2",
       "spent": 0,
       "recovery": [
-        { "period": "sr", "type": "formula", "formula": "floor(@details.level / 3)" },
-        { "period": "lr", "type": "recoverAll" }
+        {
+          "period": "sr",
+          "type": "formula",
+          "formula": "floor(@details.level / 3)"
+        },
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
       ]
     },
     "activities": {
@@ -50,89 +75,192 @@
         "_id": "Ks5USeCtehM73xey",
         "name": "Construct Mending",
         "type": "heal",
-        "activation": { "type": "action", "value": 1, "override": false },
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "override": false
+        },
         "consumption": {
           "targets": [
-            { "type": "itemUses", "value": "1", "scaling": {} }
+            {
+              "type": "itemUses",
+              "value": "1",
+              "scaling": {}
+            }
           ],
-          "scaling": { "allowed": true, "max": "3" },
+          "scaling": {
+            "allowed": true,
+            "max": "3"
+          },
           "spellSlot": true
         },
         "target": {
-          "affects": { "type": "creature", "count": "1", "choice": false },
-          "template": { "contiguous": false, "stationary": false, "units": "ft" },
+          "affects": {
+            "type": "creature",
+            "count": "1",
+            "choice": false
+          },
+          "template": {
+            "contiguous": false,
+            "stationary": false,
+            "units": "ft"
+          },
           "override": false,
           "prompt": true
         },
-        "range": { "units": "ft", "value": "5", "override": false },
+        "range": {
+          "units": "ft",
+          "value": "5",
+          "override": false
+        },
         "healing": {
           "number": 2,
           "denomination": 8,
-          "types": ["healing"],
-          "scaling": { "number": 1 },
+          "types": [
+            "healing"
+          ],
+          "scaling": {
+            "number": 1
+          },
           "bonus": "@mod + @prof",
-          "custom": { "enabled": false }
+          "custom": {
+            "enabled": false
+          }
         },
         "img": null,
         "sort": 0,
-        "description": { "chatFlavor": "Smelters Edge is applied to weld and repair the target's plating. Only meaningful against a Delta Kilo Autarch." },
-        "duration": { "units": "inst", "concentration": false, "override": false },
+        "description": {
+          "chatFlavor": "Smelters Edge is applied to weld and repair the target's plating. Only meaningful against a Delta Kilo Autarch."
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
         "effects": [],
         "flags": {},
-        "uses": { "spent": 0, "recovery": [] },
-        "visibility": { "level": {}, "requireAttunement": false, "requireIdentification": false, "requireMagic": false }
+        "uses": {
+          "spent": 0,
+          "recovery": []
+        },
+        "visibility": {
+          "level": {},
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false
+        }
       },
       "wiXewA4ScWtbrJ1J": {
         "_id": "wiXewA4ScWtbrJ1J",
         "name": "Plasma Burn",
         "type": "attack",
-        "activation": { "type": "action", "value": 1, "override": false },
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "override": false
+        },
         "consumption": {
           "targets": [
-            { "type": "itemUses", "value": "1", "scaling": {} }
+            {
+              "type": "itemUses",
+              "value": "1",
+              "scaling": {}
+            }
           ],
-          "scaling": { "allowed": true, "max": "3" },
+          "scaling": {
+            "allowed": true,
+            "max": "3"
+          },
           "spellSlot": true
         },
         "target": {
-          "template": { "contiguous": false, "units": "ft", "type": "", "stationary": false },
-          "affects": { "count": "1", "type": "creature", "choice": false },
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": "",
+            "stationary": false
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false
+          },
           "override": false,
           "prompt": true
         },
-        "range": { "units": "ft", "value": "5", "long": null, "override": false },
+        "range": {
+          "units": "ft",
+          "value": "5",
+          "long": null,
+          "override": false
+        },
         "attack": {
           "ability": "",
           "bonus": "",
           "critical": {},
           "flat": false,
-          "type": { "value": "melee", "classification": "weapon" }
+          "type": {
+            "value": "melee",
+            "classification": "weapon"
+          }
         },
         "damage": {
-          "critical": { "allow": true },
+          "critical": {
+            "allow": true
+          },
           "includeBase": true,
           "parts": [
-            { "custom": { "enabled": false, "formula": "" }, "number": 2, "denomination": 8, "bonus": "@mod + @prof", "types": ["fire"], "scaling": { "number": 1 } }
+            {
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "number": 2,
+              "denomination": 8,
+              "bonus": "@mod + @prof",
+              "types": [
+                "fire"
+              ],
+              "scaling": {
+                "number": 1
+              }
+            }
           ]
         },
         "img": null,
         "sort": 10,
-        "description": { "chatFlavor": "The plasma flame burns the target. Used against non-Autarch creatures." },
-        "duration": { "units": "inst", "concentration": false, "override": false },
+        "description": {
+          "chatFlavor": "The plasma flame burns the target. Used against non-Autarch creatures."
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
         "effects": [],
         "flags": {},
-        "uses": { "spent": 0, "recovery": [] },
-        "visibility": { "level": {}, "requireAttunement": false, "requireIdentification": false, "requireMagic": false }
+        "uses": {
+          "spent": 0,
+          "recovery": []
+        },
+        "visibility": {
+          "level": {},
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false
+        }
       }
     },
     "identifier": "smelters-edge",
-    "unidentified": { "description": "" },
+    "unidentified": {
+      "description": ""
+    },
     "container": null,
     "magicalBonus": "0"
   },
   "effects": [],
   "flags": {
-    "dkg": {
+    "delta-kilo-fluid-gauge": {
       "healsRace": true,
       "damagesNonRace": true
     }
