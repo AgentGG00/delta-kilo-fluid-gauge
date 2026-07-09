@@ -1,92 +1,225 @@
 /**
- * Delta Kilo Fluid Gauge - main.js
- * Modul-Einstiegspunkt: Settings-Registrierung, Race-Zuweisung-Hook.
- * Fachlogik zu Gauge/HUD liegt in gauge.js, zu Laublub in laublub.js.
+ * Delta Kilo Fluid Gauge - gauge.js
+ * Gauge-Update-Hook (updateWorldTime, GM-only), Gauge-HUD (ApplicationV2),
+ * HUD-Toggle-Macro-Funktion, DM-Set-Macro-Funktion.
  */
 
-const MODULE_ID = "delta-kilo-fluid-gauge";
-const RACE_IDENTIFIER = "delta-kilo-modell-a";
-const GAUGE_CAP_HOURS = 48;
+const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
 /* -------------------------------------------- */
-/*  Settings                                     */
+/*  Gauge-Update-Hook (GM-only)                  */
 /* -------------------------------------------- */
 
-Hooks.once("init", () => {
-  console.log("[DKG:main] init hook fired, registering settings");
+Hooks.on("updateWorldTime", (worldTime, dt) => {
+  console.log("[DKG:gauge] updateWorldTime hook fired", { worldTime, dt, isGM: game.user.isGM });
 
-  game.settings.register(MODULE_ID, "hudVisible", {
-    name: "Delta Kilo Fluid Gauge HUD Visibility",
-    hint: "Client-seitige Sichtbarkeit des Gauge-HUD. Wird über das Toggle-Macro gesteuert.",
-    scope: "client",
-    config: false,
-    type: Boolean,
-    default: true
-  });
-
-  console.log("[DKG:main] settings registered");
-});
-
-/* -------------------------------------------- */
-/*  Race-Zuweisung-Hook                          */
-/* -------------------------------------------- */
-
-/**
- * Feuert bei jedem Item, das einem Actor hinzugefügt wird.
- * Prüft, ob es sich um das Delta-Kilo-Race-Item handelt, und setzt
- * bei Zutreffen die initialen flags.dkg.* Werte auf dem Actor.
- */
-Hooks.on("createItem", (item, options, userId) => {
-  console.log("[DKG:main] createItem hook fired", {
-    itemName: item?.name,
-    itemType: item?.type,
-    parentActor: item?.parent?.name,
-    userId
-  });
-
-  // Nur reagieren, wenn das Item tatsächlich auf einem Actor liegt
-  if (!item.parent || item.parent.documentName !== "Actor") {
-    console.log("[DKG:main] createItem: item has no actor parent, skipping");
+  if (!game.user.isGM) {
+    console.log("[DKG:gauge] updateWorldTime: not GM client, skipping gauge update");
     return;
   }
 
-  // Nur reagieren, wenn es sich um das Delta-Kilo-Race-Item handelt
-  const identifier = item.system?.identifier;
-  if (item.type !== "race" || identifier !== RACE_IDENTIFIER) {
-    console.log("[DKG:main] createItem: not the Delta Kilo race item, skipping", {
-      type: item.type,
-      identifier
+  const { GAUGE_CAP_HOURS } = globalThis.DKG_CONSTANTS ?? { GAUGE_CAP_HOURS: 48 };
+  const dtHours = dt / 3600;
+
+  const autarchActors = game.actors.filter((a) => a.getFlag("dkg", "race") === true);
+  console.log("[DKG:gauge] found autarch actors for gauge update", { count: autarchActors.length });
+
+  for (const actor of autarchActors) {
+    const currentValue = actor.getFlag("dkg", "gaugeValue") ?? 0;
+    let newValue = currentValue + dtHours;
+
+    newValue = Math.min(GAUGE_CAP_HOURS, Math.max(0, newValue));
+
+    console.log("[DKG:gauge] updating gauge for actor", {
+      actorName: actor.name,
+      currentValue,
+      dtHours,
+      newValue
     });
-    return;
+
+    actor.update({
+      "flags.dkg.gaugeValue": newValue,
+      "flags.dkg.lastUpdate": worldTime
+    }).catch((err) => {
+      console.error("[DKG:gauge] failed to update gauge for actor", actor.id, err);
+    });
   }
-
-  const actor = item.parent;
-
-  console.log("[DKG:main] Delta Kilo race item detected on actor, initializing dkg flags", {
-    actorName: actor.name,
-    actorId: actor.id
-  });
-
-  actor.update({
-    "flags.dkg.race": true,
-    "flags.dkg.gaugeValue": 0,
-    "flags.dkg.lastUpdate": game.time.worldTime
-  }).then(() => {
-    console.log("[DKG:main] actor flags initialized successfully", { actorId: actor.id });
-  }).catch((err) => {
-    console.error("[DKG:main] failed to initialize actor flags", err);
-  });
 });
 
 /* -------------------------------------------- */
-/*  Exportierte Konstanten für andere Dateien    */
+/*  Gauge-HUD (ApplicationV2)                    */
 /* -------------------------------------------- */
 
-// Global verfügbar machen, damit gauge.js / laublub.js nicht doppelt definieren müssen
-globalThis.DKG_CONSTANTS = {
-  MODULE_ID,
-  RACE_IDENTIFIER,
-  GAUGE_CAP_HOURS
+class DKGGaugeHud extends HandlebarsApplicationMixin(ApplicationV2) {
+  static DEFAULT_OPTIONS = {
+    id: "dkg-gauge-hud",
+    window: {
+      frame: false,
+      positioned: true
+    },
+    position: {
+      left: 20,
+      top: 200,
+      width: 220,
+      height: 480
+    }
+  };
+
+  static PARTS = {
+    hud: {
+      template: `modules/${globalThis.DKG_CONSTANTS?.MODULE_ID ?? "delta-kilo-fluid-gauge"}/assets/templates/gauge-hud.hbs`
+    }
+  };
+
+  static getOwnedAutarchActor() {
+    const actor = game.actors.find((a) => a.getFlag("dkg", "race") === true && a.isOwner);
+    console.log("[DKG:gauge] getOwnedAutarchActor result", { found: !!actor, actorName: actor?.name });
+    return actor;
+  }
+
+  async _prepareContext(options) {
+    console.log("[DKG:gauge] DKGGaugeHud._prepareContext called");
+
+    const actor = DKGGaugeHud.getOwnedAutarchActor();
+    const { GAUGE_CAP_HOURS } = globalThis.DKG_CONSTANTS ?? { GAUGE_CAP_HOURS: 48 };
+
+    if (!actor) {
+      console.log("[DKG:gauge] _prepareContext: no owned autarch actor found");
+      return { hasActor: false };
+    }
+
+    const gaugeValue = actor.getFlag("dkg", "gaugeValue") ?? 0;
+    const fillPercent = Math.round((gaugeValue / GAUGE_CAP_HOURS) * 100);
+    const isAlarm = fillPercent <= 20;
+
+    console.log("[DKG:gauge] _prepareContext computed values", { gaugeValue, fillPercent, isAlarm });
+
+    return {
+      hasActor: true,
+      actorName: actor.name,
+      gaugeValue,
+      fillPercent,
+      isAlarm
+    };
+  }
+
+  async _onRender(context, options) {
+    await super._onRender(context, options);
+    console.log("[DKG:gauge] DKGGaugeHud._onRender called", { hasActor: context.hasActor });
+
+    if (!context.hasActor) return;
+
+    const fillEl = this.element.querySelector(".dkg-gauge-fill");
+    if (fillEl) {
+      fillEl.style.height = `${context.fillPercent}%`;
+    }
+
+    const lampGreen = this.element.querySelector(".dkg-lamp-green");
+    const lampRed = this.element.querySelector(".dkg-lamp-red");
+    if (lampGreen && lampRed) {
+      lampGreen.classList.toggle("dkg-lamp-on", !context.isAlarm);
+      lampRed.classList.toggle("dkg-lamp-on", context.isAlarm);
+    }
+  }
+}
+
+let dkgHudInstance = null;
+
+function refreshGaugeHud() {
+  console.log("[DKG:gauge] refreshGaugeHud called");
+
+  const { MODULE_ID } = globalThis.DKG_CONSTANTS ?? { MODULE_ID: "delta-kilo-fluid-gauge" };
+  const hudVisible = game.settings.get(MODULE_ID, "hudVisible");
+  const ownedActor = DKGGaugeHud.getOwnedAutarchActor();
+
+  const shouldShow = hudVisible && !!ownedActor;
+  console.log("[DKG:gauge] refreshGaugeHud conditions", { hudVisible, hasOwnedActor: !!ownedActor, shouldShow });
+
+  if (shouldShow) {
+    if (!dkgHudInstance) {
+      console.log("[DKG:gauge] creating new DKGGaugeHud instance");
+      dkgHudInstance = new DKGGaugeHud();
+    }
+    dkgHudInstance.render(true);
+  } else if (dkgHudInstance) {
+    console.log("[DKG:gauge] closing DKGGaugeHud instance");
+    dkgHudInstance.close();
+  }
+}
+
+Hooks.once("ready", () => {
+  console.log("[DKG:gauge] ready hook fired, initial HUD refresh");
+  refreshGaugeHud();
+});
+
+Hooks.on("updateActor", (actor, changes, options, userId) => {
+  if (actor.getFlag("dkg", "race") !== true) return;
+  console.log("[DKG:gauge] updateActor hook fired for autarch actor, refreshing HUD", { actorId: actor.id });
+  refreshGaugeHud();
+});
+
+/* -------------------------------------------- */
+/*  HUD-Toggle-Macro-Funktion                    */
+/* -------------------------------------------- */
+
+async function dkgToggleHudVisibility() {
+  console.log("[DKG:gauge] dkgToggleHudVisibility called");
+
+  const { MODULE_ID } = globalThis.DKG_CONSTANTS ?? { MODULE_ID: "delta-kilo-fluid-gauge" };
+  const current = game.settings.get(MODULE_ID, "hudVisible");
+  const next = !current;
+
+  console.log("[DKG:gauge] toggling hudVisible", { current, next });
+
+  await game.settings.set(MODULE_ID, "hudVisible", next);
+  refreshGaugeHud();
+
+  ui.notifications.info(`Delta Kilo Gauge HUD ${next ? "eingeblendet" : "ausgeblendet"}.`);
+}
+
+/* -------------------------------------------- */
+/*  DM-Set-Macro-Funktion                        */
+/* -------------------------------------------- */
+
+async function dkgSetGaugeByPercent(targetPercent) {
+  console.log("[DKG:gauge] dkgSetGaugeByPercent called", { targetPercent });
+
+  const { GAUGE_CAP_HOURS } = globalThis.DKG_CONSTANTS ?? { GAUGE_CAP_HOURS: 48 };
+
+  const token = canvas.tokens.controlled[0];
+  if (!token) {
+    console.warn("[DKG:gauge] dkgSetGaugeByPercent: no token controlled");
+    ui.notifications.warn("Kein Token ausgewählt.");
+    return;
+  }
+
+  const actor = token.actor;
+  if (!actor) {
+    console.warn("[DKG:gauge] dkgSetGaugeByPercent: controlled token has no actor");
+    ui.notifications.warn("Ausgewählter Token hat keinen Actor.");
+    return;
+  }
+
+  const newValue = GAUGE_CAP_HOURS * (targetPercent / 100);
+
+  console.log("[DKG:gauge] setting gauge value directly", { actorName: actor.name, newValue });
+
+  await actor.update({
+    "flags.dkg.gaugeValue": newValue,
+    "flags.dkg.lastUpdate": game.time.worldTime
+  });
+
+  ui.notifications.info(`Gauge von ${actor.name} auf ${targetPercent}% (${newValue.toFixed(1)}h) gesetzt.`);
+}
+
+/* -------------------------------------------- */
+/*  Global verfügbar machen für Macros           */
+/* -------------------------------------------- */
+
+globalThis.DKG_GAUGE = {
+  toggleHudVisibility: dkgToggleHudVisibility,
+  setGaugeByPercent: dkgSetGaugeByPercent,
+  refreshGaugeHud
 };
 
-console.log("[DKG:main] main.js loaded");
+console.log("[DKG:gauge] gauge.js loaded");

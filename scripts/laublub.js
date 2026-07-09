@@ -170,6 +170,110 @@ Hooks.on("dnd5e.postUseActivity", async (activity, usageConfig, results) => {
 });
 
 /* -------------------------------------------- */
+/*  Throw-Öl-Effekt-Erzeugung (dnd5e.postUseActivity) */
+/* -------------------------------------------- */
+
+/**
+ * Fängt jede Activity-Nutzung ab. Reagiert nur bei einer Throw-Activity
+ * eines Laublub-Items mit erfolgreichem Treffer. Erzeugt auf dem
+ * Ziel-Actor einen dkg-Öl-Active-Effect mit der passenden Rundenzahl
+ * (flags.dkg.throwDurationRounds auf dem Item, umgerechnet in Sekunden
+ * à 6 Sekunden/Runde).
+ */
+Hooks.on("dnd5e.postUseActivity", async (activity, usageConfig, results) => {
+  console.log("[DKG:laublub] dnd5e.postUseActivity hook fired (throw check)", {
+    activityName: activity?.name,
+    itemName: activity?.item?.name
+  });
+
+  if (activity?.name !== "Throw") {
+    console.log("[DKG:laublub] postUseActivity (throw check): not a Throw activity, skipping");
+    return;
+  }
+
+  const item = activity.item;
+  const throwDurationRounds = item?.getFlag("dkg", "throwDurationRounds");
+
+  if (throwDurationRounds === undefined) {
+    console.log("[DKG:laublub] postUseActivity (throw check): item has no throwDurationRounds flag, skipping");
+    return;
+  }
+
+  // Nur bei tatsächlichem Treffer einen Effekt setzen. Die genaue
+  // Struktur von "results" für Attack-Activities (Trefferstatus) ist
+  // nicht zuverlässig dokumentiert; als robuster Fallback wird über die
+  // zuletzt erstellte Chat-Message auf einen Attack-Roll mit isHit-Flag
+  // geprüft. Falls das nicht ermittelbar ist, wird sicherheitshalber
+  // NICHT automatisch ein Effekt gesetzt (lieber manuell nachtragen als
+  // fälschlich einen Öl-Status auf ein verfehltes Ziel legen).
+  const hit = results?.rolls?.some?.((r) => r?.isHit === true) ?? results?.hit ?? null;
+
+  if (hit === false) {
+    console.log("[DKG:laublub] postUseActivity (throw check): attack missed, not applying oil effect");
+    return;
+  }
+  if (hit === null) {
+    console.warn("[DKG:laublub] postUseActivity (throw check): hit status could not be determined, skipping automatic effect. Apply manually if the attack hit.");
+    return;
+  }
+
+  const targetActor = Array.from(game.user.targets)[0]?.actor;
+  if (!targetActor) {
+    console.warn("[DKG:laublub] postUseActivity (throw check): no target actor found for oil effect");
+    return;
+  }
+
+  console.log("[DKG:laublub] postUseActivity (throw check): applying oil effect", {
+    targetActorName: targetActor.name,
+    throwDurationRounds
+  });
+
+  await dkgApplyOilEffect(targetActor, throwDurationRounds, item.name);
+});
+
+/**
+ * Erzeugt den dkg-Öl-Active-Effect auf dem Ziel-Actor. remainingRounds
+ * wird zusätzlich als eigenes Flag geführt (statt sich ausschließlich
+ * auf effect.duration zu verlassen), damit dkgWipeOffOil() die Dauer
+ * manuell reduzieren kann.
+ */
+async function dkgApplyOilEffect(targetActor, durationRounds, sourceItemName) {
+  console.log("[DKG:laublub] dkgApplyOilEffect called", {
+    targetActorName: targetActor?.name,
+    durationRounds,
+    sourceItemName
+  });
+
+  const durationSeconds = durationRounds * 6;
+
+  const existing = targetActor.effects.find((e) => e.getFlag("dkg", "isOilEffect") === true);
+  if (existing) {
+    console.log("[DKG:laublub] dkgApplyOilEffect: existing oil effect found, deleting before re-applying", existing.id);
+    await existing.delete();
+  }
+
+  await targetActor.createEmbeddedDocuments("ActiveEffect", [{
+    name: `Mit Öl bedeckt (${sourceItemName})`,
+    icon: "icons/magic/water/droplets-blue.webp",
+    duration: {
+      seconds: durationSeconds
+    },
+    flags: {
+      dkg: {
+        isOilEffect: true,
+        remainingRounds: durationRounds
+      }
+    }
+  }]);
+
+  console.log("[DKG:laublub] dkgApplyOilEffect: oil effect created", {
+    targetActorName: targetActor.name,
+    durationRounds,
+    durationSeconds
+  });
+}
+
+/* -------------------------------------------- */
 /*  Douse-Template-Ablauf-Check                  */
 /* -------------------------------------------- */
 
@@ -251,6 +355,68 @@ async function dkgMarkDouseTemplate(templateDocument, durationSeconds) {
   console.log("[DKG:laublub] douse template flags set", { templateId: templateDocument.id });
 }
 
+/**
+ * Merkt sich temporär, welche Douse-Activity gerade läuft, damit der
+ * nachfolgende createMeasuredTemplate-Hook weiß, welches Item/welche
+ * Ablaufdauer zum neu platzierten Template gehört. Wird vom
+ * dnd5e.postUseActivity-Hook direkt vor der Template-Platzierung gesetzt.
+ */
+let dkgPendingDouseDuration = null;
+
+/**
+ * Fängt jede Activity-Nutzung ab. Reagiert nur, wenn es sich um eine
+ * Douse-Activity eines Laublub-Items handelt (erkennbar an
+ * flags.dkg.douseEvaporateSeconds auf dem Item). Merkt die Ablaufdauer
+ * für den nachfolgenden createMeasuredTemplate-Hook vor.
+ */
+Hooks.on("dnd5e.postUseActivity", (activity, usageConfig, results) => {
+  console.log("[DKG:laublub] dnd5e.postUseActivity hook fired (douse check)", {
+    activityName: activity?.name,
+    itemName: activity?.item?.name
+  });
+
+  if (activity?.name !== "Douse") {
+    console.log("[DKG:laublub] postUseActivity (douse check): not a Douse activity, skipping");
+    return;
+  }
+
+  const item = activity.item;
+  const durationSeconds = item?.getFlag("dkg", "douseEvaporateSeconds");
+
+  if (durationSeconds === undefined) {
+    console.log("[DKG:laublub] postUseActivity (douse check): item has no douseEvaporateSeconds flag, skipping");
+    return;
+  }
+
+  console.log("[DKG:laublub] postUseActivity (douse check): storing pending douse duration", { durationSeconds });
+  dkgPendingDouseDuration = durationSeconds;
+});
+
+/**
+ * Feuert, sobald ein Measured Template auf der Szene erstellt wird
+ * (z.B. durch die Douse-Activity's Template-Placement-Schritt).
+ * Verknüpft das neue Template mit dkgMarkDouseTemplate, falls kurz zuvor
+ * eine Douse-Activity ausgeführt wurde.
+ */
+Hooks.on("createMeasuredTemplate", async (templateDocument, options, userId) => {
+  console.log("[DKG:laublub] createMeasuredTemplate hook fired", {
+    templateId: templateDocument?.id,
+    userId,
+    hasPendingDouse: dkgPendingDouseDuration !== null
+  });
+
+  if (dkgPendingDouseDuration === null) {
+    console.log("[DKG:laublub] createMeasuredTemplate: no pending douse activity, skipping");
+    return;
+  }
+
+  const durationSeconds = dkgPendingDouseDuration;
+  dkgPendingDouseDuration = null;
+
+  console.log("[DKG:laublub] createMeasuredTemplate: applying pending douse duration", { durationSeconds });
+  await dkgMarkDouseTemplate(templateDocument, durationSeconds);
+});
+
 /* -------------------------------------------- */
 /*  Abwisch-Macro-Funktion (Throw-Öl-Status)     */
 /* -------------------------------------------- */
@@ -316,62 +482,8 @@ async function dkgWipeOffOil() {
 globalThis.DKG_LAUBLUB = {
   requestGaugeIncrease: dkgRequestGaugeIncrease,
   markDouseTemplate: dkgMarkDouseTemplate,
-  wipeOffOil: dkgWipeOffOil
+  wipeOffOil: dkgWipeOffOil,
+  applyOilEffect: dkgApplyOilEffect
 };
 
 console.log("[DKG:laublub] laublub.js loaded");
-
-/* -------------------------------------------- */
-/*  Douse-Template-Verknüpfung                   */
-/* -------------------------------------------- */
-
-Hooks.on("createMeasuredTemplate", async (templateDocument, options, userId) => {
-  const item = templateDocument.getFlag("dnd5e", "item");
-  if (!item) return;
-
-  const sourceItem = fromUuidSync?.(item) ?? null;
-  const durationSeconds = sourceItem?.flags?.dkg?.douseEvaporateSeconds;
-  if (durationSeconds === undefined) return;
-
-  console.log("[DKG:laublub] createMeasuredTemplate: douse template detected", {
-    templateId: templateDocument.id,
-    durationSeconds
-  });
-
-  await templateDocument.setFlag("dkg", "isDouseTemplate", true);
-  await templateDocument.setFlag("dkg", "placedAt", game.time.worldTime);
-  await templateDocument.setFlag("dkg", "durationSeconds", durationSeconds);
-});
-
-/* -------------------------------------------- */
-/*  Throw-Öl-Effekt: Dauer nach Reinheitsstufe setzen */
-/* -------------------------------------------- */
-
-Hooks.on("dnd5e.postUseActivity", async (activity, usageConfig, results) => {
-  if (activity?.name !== "Throw") return;
-
-  const throwDurationRounds = activity.item?.getFlag("dkg", "throwDurationRounds");
-  if (throwDurationRounds === undefined) return;
-
-  const targetActor = Array.from(game.user.targets)[0]?.actor;
-  if (!targetActor) {
-    console.warn("[DKG:laublub] postUseActivity (throw): kein Ziel gefunden, Effekt-Dauer nicht gesetzt");
-    return;
-  }
-
-  const oilEffect = targetActor.effects.find((e) => e.getFlag("dkg", "isOilEffect") === true);
-  if (!oilEffect) {
-    console.warn("[DKG:laublub] postUseActivity (throw): kein oil_effect auf Ziel angewendet, bitte manuell prüfen (Treffer?)");
-    return;
-  }
-
-  console.log("[DKG:laublub] postUseActivity (throw): setze Effekt-Dauer nach Reinheitsstufe", {
-    targetActor: targetActor.name,
-    throwDurationRounds
-  });
-
-  await oilEffect.update({
-    duration: { seconds: throwDurationRounds * 6 },
-    "flags.dkg.remainingRounds": throwDurationRounds
-  });
-});
